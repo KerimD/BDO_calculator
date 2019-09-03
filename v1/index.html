@@ -1,0 +1,203 @@
+<!--
+    index.html
+    Deniz Kerim
+-->
+
+
+<html>
+    <head>
+        <title>Enhancing Calculator</title>
+
+        <!--link css-->
+        <link href="index.css" rel="stylesheet">
+    </head>
+
+    <!--accessory table-->
+    <table id="accTable"></table>
+
+    <body onload="createArrays()">
+
+        <!--Gray out container-->
+        <div id="grayout" onclick="hideCostTable()"></div>
+
+        <!--The final calculated Table-->
+        <table id="costTable"></table>
+
+        <div id="everythingElse">
+            <h1>Enhancing Calculator</h1>
+
+            <h2>Market Costs of Stones and Shards</h2>
+
+            <!--inputs 1 - 6-->
+            <table class="first-table">
+                <tr>
+                    <th>
+                        <a>Black Stone (Weapon)</a>
+                    </th>
+                    <th>
+                        <a>Sharp Black Crystal Shard</a>
+                    </th>
+                    <th>
+                        <a>Concentrated Magical Black Stone (Weapon)</a></th>
+                </tr>
+                <tr>
+                    <th>
+                        <input
+                        type="number"
+                        class="inputNum"
+                        placeholder="166000"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = '166000'">
+                    </th>
+                    <th>
+                        <input
+                        type="number"
+                        class="inputNum"
+                        placeholder="3450000"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = '3450000'">
+                    </th>
+                    <th>
+                        <input
+                    
+                        type="number"
+                        class="inputNum"
+                        placeholder="3980000"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = '3980000'">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <a>Black Stone (Armor)</a>
+                    </th>
+                    <th>
+                        <a>Hard Black Crystal Shard</a>
+                    </th>
+                    <th>
+                        <a>Concentrated Magical Black Stone (Armor)</a>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input
+                        type="number"
+                        class="inputNum"
+                        placeholder="198000"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = '198000'">
+                    </th>
+                    <th>
+                        <input
+                        type="number"
+                        class="inputNum"
+                        placeholder="1600000"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = '1600000'">
+                    </th>
+                    <th>
+                        <input
+                        type="number"
+                        class="inputNum"
+                        placeholder="2240000"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = '2240000'">
+                    </th>
+                </tr>
+            </table>
+
+            <div style="color: white;text-align: center;margin: 20px">*ONLY ACCESSORY OPTION WORKS*</div>
+
+            <!--dropdowns-->
+            <table class="second-table">
+                <tr>
+                    <th class="dropdown">
+                        <button class="dropbtn">Select Type</button>
+                        <div class="dropdown-content">
+                            <b onclick="updateDropdown(0, 'Armor')" class="middleOption">Armor</b>
+                            <b onclick="updateDropdown(0, 'Weapon')" class="middleOption">Weapon</b>
+                            <b onclick="updateDropdown(0, 'Accessory')" class="middleOption">Accessory</b>
+                            <b onclick="updateDropdown(0, 'Functional Clothes')" class="lastOption">Functional Clothes</b>
+                        </div>
+                    </th>
+
+                    <th class="hiddenDropdown">
+                        <button class="dropbtn">Select Rarity</button>
+                        <div class="dropdown-content">
+                            <b onclick="updateDropdown(1, 'White')" class="middleOption">White</b>
+                            <b onclick="updateDropdown(1, 'Green')" class="middleOption">Green</b>
+                            <b onclick="updateDropdown(1, 'Blue')" class="middleOption">Blue</b>
+                            <b onclick="updateDropdown(1, 'Yellow')" class="lastOption">Yellow</b>
+                        </div>
+                    </th>
+
+                    <th class="hiddenDropdown">
+                        <button class="dropbtn">Select Level</button>
+                        <div class="dropdown-content">
+                            <b onclick="updateDropdown(2, '0 - 1')" class="middleOption">0 - 1</b>
+                            <b onclick="updateDropdown(2, '1 - 2')" class="middleOption">1 - 2</b>
+                            <b onclick="updateDropdown(2, '2 - 3')" class="middleOption">2 - 3</b>
+                            <b onclick="updateDropdown(2, '3 - 4')" class="middleOption">3 - 4</b>
+                            <b onclick="updateDropdown(2, '4 - 5')" class="middleOption">4 - 5</b>
+                            <b onclick="updateDropdown(2, '5 - 6')" class="middleOption">5 - 6</b>
+                            <b onclick="updateDropdown(2, '6 - 7')" class="middleOption">6 - 7</b>
+                            <b onclick="updateDropdown(2, '7 - 8')" class="middleOption">7 - 8</b>
+                            <b onclick="updateDropdown(2, '8 - 9')" class="middleOption">8 - 9</b>
+                            <b onclick="updateDropdown(2, '9 - 10')" class="middleOption">9 - 10</b>
+                            <b onclick="updateDropdown(2, '10 - 11')" class="middleOption">10 - 11</b>
+                            <b onclick="updateDropdown(2, '11 - 12')" class="middleOption">11 - 12</b>
+                            <b onclick="updateDropdown(2, '12 - 13')" class="middleOption">12 - 13</b>
+                            <b onclick="updateDropdown(2, '13 - 14')" class="middleOption">13 - 14</b>
+                            <b onclick="updateDropdown(2, '14 - 15')" class="middleOption">14 - 15</b>
+                            <b onclick="updateDropdown(2, '15 - PRI')" class="middleOption">15 - PRI</b>
+                            <b onclick="updateDropdown(2, 'PRI - DUO')" class="middleOption">PRI - DUO</b>
+                            <b onclick="updateDropdown(2, 'DUO - TRI')" class="middleOption">DUO - TRI</b>
+                            <b onclick="updateDropdown(2, 'TRI - TET')" class="middleOption">TRI - TET</b>
+                            <b onclick="updateDropdown(2, 'TET - PEN')" class="lastOption">TET - PEN</b>
+                        </div>
+                    </th>
+                </tr>
+            </table>
+
+            <!--inputs 7 - 9-->
+            <table class="third-table">
+                <tr>
+                    <th>
+                        <a class="base-item">Cost of Base Item</a>
+                    </th>
+                    <th>
+                        <a class="pre-enhance">Cost of Item Pre-Enhance</a>
+                    </th>
+                    <th>
+                        <a class="post-enhance">Cost of Item Post-Enhance</a>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input
+                        type="number"
+                        class="base-item inputNum">
+                    </th>
+                    <th>
+                        <input
+                        type="number"
+                        class="pre-enhance inputNum">
+                    </th>
+                    <th>
+                        <input
+                        type="number"
+                        class="post-enhance inputNum">
+                    </th>
+                </tr>
+            </table>
+
+            <!--calculate button-->
+            <div style="text-align: center">
+                <button onclick="updateGlobalitemCosts()" class="calc">Calculate</button>
+            </div>
+        </div>
+
+        <!--link js-->
+        <script src="index.js"></script>
+    </body>
+</html>

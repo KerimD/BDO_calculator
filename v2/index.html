@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>BDO Calculator</title>
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    </head>
+
+    <body onload="load_stuff()">
+        <header></header>
+
+        <main>
+            <h1>Enhancing Calculator</h1>
+
+            <section class="advanced-values main-section">
+                <h2>Advanced Options</h2>
+                <label class="sort-label">
+                    <input
+                        type="checkbox"
+                        class="sort-checkbox"
+                        onclick="calculate()"
+                    />
+                    Sort Table
+                </label>
+                <div class="three-dots"></div>
+                <div>
+                    <label>Black Stone (Weapon)</label><br />
+                    <input
+                        class="advanced-input"
+                        type="number"
+                        placeholder="166000"
+                    />
+                </div>
+                <div>
+                    <label>Black Stone (Armor)</label><br />
+                    <input
+                        class="advanced-input"
+                        type="number"
+                        placeholder="198000"
+                    />
+                </div>
+                <div>
+                    <label>Sharp Black Crystal Shard</label><br />
+                    <input
+                        class="advanced-input"
+                        type="number"
+                        placeholder="3450000"
+                    />
+                </div>
+                <div>
+                    <label>Hard Black Crystal Shard</label><br />
+                    <input
+                        class="advanced-input"
+                        type="number"
+                        placeholder="1600000"
+                    />
+                </div>
+                <div>
+                    <label>Concentrated Magical Black Stone (Weapon)</label
+                    ><br />
+                    <input
+                        class="advanced-input"
+                        type="number"
+                        placeholder="3980000"
+                    />
+                </div>
+                <div>
+                    <label>Concentrated Magical Black Stone (Armor)</label
+                    ><br />
+                    <input
+                        class="advanced-input"
+                        type="number"
+                        placeholder="2240000"
+                    />
+                </div>
+            </section>
+
+            <section class="dropdowns main-section">
+                <h2>Select Items</h2>
+                <div class="three-dots"></div>
+                <div class="type-dropdown dropdown">
+                    <h3>Select Type</h3>
+                    <select class="type-select" onclick="updateLevel(this)">
+                        <option>Armor</option>
+                        <option>Weapon</option>
+                        <option>Accessory</option>
+                        <option>Functional Clothes</option>
+                    </select>
+                </div>
+                <div class="level-dropdown dropdown">
+                    <h3>Select Level</h3>
+                    <select class="level-select">
+                        <option>PRI</option>
+                        <option>DUO</option>
+                        <option>TRI</option>
+                        <option>TET</option>
+                        <option>PEN</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="item-costs main-section">
+                <h2>Item Costs</h2>
+                <div class="three-dots"></div>
+                <div>
+                    <label>Base Item</label><br />
+                    <input class="base-item item-cost-input" type="number" />
+                </div>
+                <div>
+                    <label>Pre-Enhance Item</label><br />
+                    <input
+                        class="pre-enhance-item item-cost-input"
+                        type="number"
+                    />
+                </div>
+                <div>
+                    <label>Post-Enhance Item</label><br />
+                    <input
+                        class="post-enhance-item item-cost-input"
+                        type="number"
+                    />
+                </div>
+            </section>
+
+            <button onclick="calculate()">Calculate</button>
+
+            <section class="fs-table"></section>
+        </main>
+
+        <footer></footer>
+
+        <script type="text/javascript" src="index.js"></script>
+    </body>
+</html>

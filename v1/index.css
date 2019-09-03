@@ -1,0 +1,211 @@
+/*
+    index.css
+    Deniz Kerim
+*/
+
+
+body {
+    background-color: black;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin: 70px 0px;
+}
+
+h2 {
+    color:white;
+    text-align: center;
+    margin: 30px 0px;
+}
+
+.first-table {
+    color: white;
+    font-size: 20px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.second-table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.third-table {
+    color: white;
+    font-size: 20px;
+    min-width: 600px;
+    max-width: 900px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#grayout {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 2;
+    display: none;
+}
+
+#costTable {
+    color: white;
+    background-color: black;
+    min-width: 300px;
+    border: solid;
+    border-radius: 20px;
+    border-width: 0px 4px;
+    border-color: red;
+    font-size: 40px;
+    position: absolute;
+    margin-top: 40%;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.base-item {
+    display: none;
+    margin: 0px 30px;
+}
+
+.pre-enhance {
+    display: none;
+    margin: 0px 30px;
+}
+
+.post-enhance {
+    display: none;
+    margin: 0px 30px;
+}
+
+input {
+    width: 150px;
+    font-size: 20px;
+    padding: 10px 10px;
+    margin: 0px 0px 40px;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    border-color: red;
+    border-width: 0px 2px 0px 2px;
+    background-color: black;
+    outline: none; /* to stop default border of blue */
+}
+
+/* to remove the up and down arrows for input type=number */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/*to change the placeholder color*/
+::placeholder {  /*Chrome, Firefox, Opera, Safari 10.1+*/
+    color: gray;
+    opacity: 1;  /*Firefox*/
+}
+
+  :-ms-input-placeholder {  /*Internet Explorer 10-11*/
+    color: gray;
+}
+
+  ::-ms-input-placeholder {  /*Microsoft Edge*/
+    color: gray;
+}
+
+
+/* for the dropdown menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 0px 15px;
+}
+
+.dropbtn {
+    background-color: black;
+    color: white;
+    min-width: 250px;
+    padding: 16px;
+    font-size: 20px;
+    border-color: red;
+    border-radius: 20px;
+    border-width: 0px 2px 0px 2px;
+    outline: none;
+}
+
+.dropdown-content {
+    font-size: 20px;
+    display: none;
+    position: absolute;
+    background-color: black;
+    color: white;
+    text-align: center;
+    min-width: 250px;
+    z-index: 1;
+}
+
+.dropdown-content b {
+    border-style: solid;
+    border-width: 0px 2px 0px 2px;
+    border-color: red;
+    padding: 12px 16px;
+    display: block;
+}
+
+.dropdown-content .lastOption {
+    border-radius: 0px 0px 20px 20px;
+}
+
+.dropdown-content b:hover {
+    background-color: red;
+    border-radius: 20px;
+}
+
+.dropbtn:hover {
+    cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+    cursor: pointer;
+    display: block;
+}
+
+.hiddenDropdown {
+    position: relative;
+    display: none;
+    margin: 0px 15px;
+}
+
+.hiddenDropdown:hover .dropdown-content {
+    cursor: pointer;
+    display: block;
+}
+
+.calc {
+    color: white;
+    background-color: black;
+    border-color: red;
+    border-radius: 20px;
+    min-width: 250px;
+    padding: 16px;
+    font-size: 20px;
+    border-width: 0px 2px 0px 2px;
+    display: none;
+    margin: 40px 0px;
+    outline: none;
+}
+
+.calc:hover {
+    background-color: red;
+    cursor: pointer;
+}
