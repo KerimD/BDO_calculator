@@ -29,6 +29,14 @@
                 </label>
                 <div class="three-dots"></div>
                 <div>
+                    <label>Memory Fragment</label><br />
+                    <input
+                        class="advanced-input"
+                        type="number"
+                        placeholder="2000000"
+                    />
+                </div>
+                <div>
                     <label>Black Stone (Weapon)</label><br />
                     <input
                         class="advanced-input"
@@ -86,20 +94,29 @@
                 <div class="type-dropdown dropdown">
                     <h3>Select Type</h3>
                     <select class="type-select" onclick="updateLevel(this)">
-                        <option>Armor</option>
-                        <option>Weapon</option>
                         <option>Accessory</option>
-                        <option>Functional Clothes</option>
+                        <option>Armor</option>
                     </select>
                 </div>
                 <div class="level-dropdown dropdown">
-                    <h3>Select Level</h3>
+                    <h3>Select Level <span>?</span></h3>
                     <select class="level-select">
                         <option>PRI</option>
                         <option>DUO</option>
                         <option>TRI</option>
                         <option>TET</option>
                         <option>PEN</option>
+                    </select>
+                </div>
+                <div class="Grade-dropdown dropdown">
+                    <h3>Select Grade</h3>
+                    <select
+                        style="background: gray"
+                        class="grade-select"
+                        disabled
+                    >
+                        <option>Yellow</option>
+                        <option>not Yellow</option>
                     </select>
                 </div>
             </section>

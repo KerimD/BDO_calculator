@@ -10,6 +10,7 @@
 
 // could pull from market in future for up to date defaults
 const ITEM_COSTS = {
+    memoryFragment: 2000000,
     blackStoneWeapon: 166000,
     blackStoneArmor: 198000,
     sharpBlackCrystalShard: 3450000,
@@ -21,7 +22,9 @@ const ITEM_COSTS = {
     postEnhanceItem: null
 };
 
+// in order to reset ITEM_COSTS if user removed own value
 const DEFAULT_ITEM_COSTS = {
+    memoryFragment: 2000000,
     blackStoneWeapon: 166000,
     blackStoneArmor: 198000,
     sharpBlackCrystalShard: 3450000,
@@ -304,12 +307,12 @@ const updateItemCosts = () => {
 
     counter = 0;
     for (let key in ITEM_COSTS) {
-        if (counter >= 6) {
+        if (counter >= 7) {
             break;
         }
         newValue = advancedInputs[counter].value;
         if (newValue) {
-            ITEM_COSTS[key] = newValue;
+            ITEM_COSTS[key] = Number(newValue);
         } else {
             ITEM_COSTS[key] = DEFAULT_ITEM_COSTS[key];
         }
@@ -329,7 +332,7 @@ const updateItemCosts = () => {
     if (typeSelect == 'Accessory' || typeSelect == 'Functional Clothes') {
         newValue = itemCostInputs[0].value;
         if (newValue) {
-            ITEM_COSTS.baseItem = newValue;
+            ITEM_COSTS.baseItem = Number(newValue);
         } else {
             errorMsg += 'Base Item ';
         }
@@ -337,14 +340,14 @@ const updateItemCosts = () => {
 
     newValue = itemCostInputs[1].value;
     if (newValue) {
-        ITEM_COSTS.preEnhanceItem = newValue;
+        ITEM_COSTS.preEnhanceItem = Number(newValue);
     } else {
         errorMsg += 'Pre-Enhance Item ';
     }
 
     newValue = itemCostInputs[2].value;
     if (newValue) {
-        ITEM_COSTS.postEnhanceItem = newValue;
+        ITEM_COSTS.postEnhanceItem = Number(newValue);
     } else {
         errorMsg += 'Post-Enhance Item';
     }
@@ -371,6 +374,7 @@ const calculateCosts = () => {
 const calculateCost = fs => {
     let currType = document.getElementsByClassName('type-select')[0].value;
     let currLevel = document.getElementsByClassName('level-select')[0].value;
+    let currGrade = document.getElementsByClassName('grade-select')[0].value;
     let cost, success, fail;
 
     if (currType == 'Accessory') {
@@ -393,37 +397,38 @@ const calculateCost = fs => {
         success = SUCCESS_ARMOR[fs][currLevel];
         fail = 1 - success;
 
+        let upgradeStone;
         if (
-            currLevel == PRI ||
-            currLevel == DUO ||
-            currLevel == TRI ||
-            currLevel == TET ||
-            currLevel == PEN
+            currLevel == 'PRI' ||
+            currLevel == 'DUO' ||
+            currLevel == 'TRI' ||
+            currLevel == 'TET' ||
+            currLevel == 'PEN'
         ) {
-            cost =
-                fail *
-                    (COST_OF_FAILSTACKS[fs + 1] -
-                        COST_OF_FAILSTACKS[fs] -
-                        ITEM_COSTS.concentratedMagicalBlackStoneArmor -
-                        ITEM_COSTS.preEnhanceItem) + // lose durability
-                success *
-                    (ITEM_COSTS.postEnhanceItem -
-                        ITEM_COSTS.concentratedMagicalBlackStoneArmor -
-                        ITEM_COSTS.preEnhanceItem -
-                        COST_OF_FAILSTACKS[fs]);
+            upgradeStone = ITEM_COSTS.concentratedMagicalBlackStoneArmor;
         } else {
-            cost =
-                fail *
-                    (COST_OF_FAILSTACKS[fs + 1] -
-                        COST_OF_FAILSTACKS[fs] -
-                        ITEM_COSTS.blackStoneArmor -
-                        ITEM_COSTS.preEnhanceItem) +
-                success *
-                    (ITEM_COSTS.postEnhanceItem -
-                        ITEM_COSTS.blackStoneArmor -
-                        ITEM_COSTS.preEnhanceItem -
-                        COST_OF_FAILSTACKS[fs]);
+            upgradeStone = ITEM_COSTS.blackStoneArmor;
         }
+
+        let durabilityCost;
+        if (currGrade == 'Yellow') {
+            durabilityCost = 10 * ITEM_COSTS.memoryFragment;
+        } else {
+            durabilityCost = ITEM_COSTS.baseItem;
+        }
+
+        cost =
+            fail *
+                (COST_OF_FAILSTACKS[fs + 1] -
+                    durabilityCost -
+                    upgradeStone -
+                    ITEM_COSTS.preEnhanceItem -
+                    COST_OF_FAILSTACKS[fs]) +
+            success *
+                (ITEM_COSTS.postEnhanceItem -
+                    upgradeStone -
+                    ITEM_COSTS.preEnhanceItem -
+                    COST_OF_FAILSTACKS[fs]);
     }
 
     return cost;
@@ -487,18 +492,18 @@ const displayFSTable = costs => {
     table.innerHTML = '';
 
     div = document.createElement('div');
-    text = document.createTextNode('fs');
+    text = document.createTextNode('Fs');
     div.appendChild(text);
     div.className = 'failstack';
-    div.style.backgroundColor = 'gray';
-    div.style.borderColor = 'darkblue';
+    div.style.backgroundColor = 'rgb(63, 63, 63)';
+    div.style.borderColor = 'black';
     table.appendChild(div);
     div = document.createElement('div');
-    text = document.createTextNode('cost');
+    text = document.createTextNode('Cost');
     div.appendChild(text);
     div.className = 'cost';
-    div.style.backgroundColor = 'gray';
-    div.style.borderColor = 'gray';
+    div.style.backgroundColor = 'rgb(63, 63, 63)';
+    div.style.border = 'none';
     table.appendChild(div);
 
     for (x in costs) {
@@ -545,6 +550,19 @@ const displayFSTable = costs => {
 const updateLevel = selectDropdown => {
     let levelSelect = document.getElementsByClassName('level-select')[0];
     let tempOption;
+
+    // disable grade dropdown for certain types of items
+    let gradeSelect = document.getElementsByClassName('grade-select')[0];
+    if (
+        selectDropdown.value == 'Accessory' ||
+        selectDropdown.value == 'Functional Clothes'
+    ) {
+        gradeSelect.disabled = true;
+        gradeSelect.style.background = 'gray';
+    } else {
+        gradeSelect.disabled = false;
+        gradeSelect.style.background = 'white';
+    }
 
     // reset dropdown
     levelSelect.innerHTML = '';

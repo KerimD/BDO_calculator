@@ -1,17 +1,22 @@
 /* Deniz Kerim */
 
 /*
-Resolution Cheat Sheet
-360×640 – 21.54%
-1366×768 – 12.85%
-1920×1080 – 7.76%
-375×667 – 4.94%
-1440×900 – 3.32%
-1280×800 – 2.67%
+	Resolution Cheat Sheet
+	360×640 – 21.54%
+	1366×768 – 12.85%
+	1920×1080 – 7.76%
+	375×667 – 4.94%
+	1440×900 – 3.32%
+	1280×800 – 2.67%
 */
 
-$background-color: rgb(70, 0, 0);
-$highlight-color: red;
+/*
+	Cool colors
+	rgb(70, 0, 0);
+*/
+
+$background-color: rgb(63, 63, 63);
+$highlight-color: rgb(0, 247, 255);
 
 * {
     // default values are 1em for some reason
@@ -39,7 +44,7 @@ $highlight-color: red;
 }
 
 body {
-    background: black;
+    background: rgb(41, 41, 41);
     color: white;
 }
 
@@ -51,17 +56,17 @@ header {
 main {
     padding: 1em 0;
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(6, auto);
     grid-row-gap: 1em;
     justify-content: center;
     grid-template-areas:
-        'title .'
-        'advanced-options .'
-        'dropdowns .'
-        'item-costs .'
-        'button .'
-        'table .';
+        'title . .'
+        'advanced-options . .'
+        'dropdowns . .'
+        'item-costs . .'
+        'button . .'
+        'table . .';
 
     h1 {
         justify-self: center;
@@ -69,6 +74,8 @@ main {
         background: $background-color;
         padding: 0.5em 1em;
         border-radius: 10px;
+        font-size: 20px;
+        font-weight: 500;
     }
 
     .main-section {
@@ -99,7 +106,7 @@ main {
             }
 
             &::before {
-                background: rgb(255, 122, 122);
+                background: coral;
                 height: 15px;
                 width: 15px;
                 bottom: -4px;
@@ -119,7 +126,7 @@ main {
             margin-left: 1em;
 
             input {
-                background: black;
+                background: rgb(30, 30, 30);
                 color: white;
                 margin-top: 0.3em;
                 padding-left: 10px;
@@ -133,7 +140,7 @@ main {
     .advanced-values {
         grid-area: advanced-options;
         display: grid;
-        grid-template-rows: 1fr 1fr repeat(6, auto);
+        grid-template-rows: 1fr repeat(8, auto);
         grid-row-gap: 1em;
 
         label {
@@ -169,16 +176,30 @@ main {
             font-weight: 500;
         }
 
-        .level-dropdown h3 {
+        .level-dropdown span {
+            text-decoration: underline;
             position: relative;
+            color: $highlight-color;
+            //color: rgb(77, 77, 255);
+            margin-left: 0.5em;
+            font-size: 18px;
+            font-weight: 600;
 
             &::after {
-                content: '*level u r hitting for*';
+                content: '* Level u r hitting for *';
+                display: none;
                 position: absolute;
-                font-size: 10px;
-                color: red;
-                left: 9em;
-                top: 0.4em;
+                font-size: 14px;
+                color: $highlight-color;
+                top: -1.6em;
+                left: 0;
+                background: black;
+                width: 11em;
+            }
+
+            &:hover::after,
+            &:focus::after {
+                display: inline-block;
             }
         }
     }
@@ -200,7 +221,7 @@ main {
         background: $highlight-color;
         color: white;
         padding: 0.5em 1em;
-        border: 2px solid red;
+        border: 2px solid $highlight-color;
         border-radius: 10px;
 
         &:hover {
@@ -245,15 +266,19 @@ footer {
     main {
         grid-column-gap: 1em;
         grid-template-areas:
-            'title button'
-            'advanced-options dropdowns'
-            'advanced-options item-costs'
-            'table table'
-            '. .'
-            '. .';
+            'title button .'
+            'advanced-options dropdowns .'
+            'advanced-options item-costs .'
+            'table table .'
+            '. . .'
+            '. . .';
 
         h1 {
             justify-self: left;
+        }
+
+        .level-dropdown span:hover {
+            cursor: help;
         }
 
         button {
@@ -265,11 +290,18 @@ footer {
     }
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 900px) {
     header {
     }
 
     main {
+        grid-template-areas:
+            'title button table'
+            'advanced-options dropdowns table'
+            'advanced-options item-costs table'
+            '. . table'
+            '. . .'
+            '. . .';
     }
 
     footer {
