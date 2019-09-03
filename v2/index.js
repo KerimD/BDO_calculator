@@ -416,6 +416,7 @@ const calculateCost = fs => {
                 fail *
                     (COST_OF_FAILSTACKS[fs + 1] -
                         COST_OF_FAILSTACKS[fs] -
+                        ITEM_COSTS.baseItem -
                         ITEM_COSTS.blackStoneArmor -
                         ITEM_COSTS.preEnhanceItem) +
                 success *
@@ -490,15 +491,15 @@ const displayFSTable = costs => {
     text = document.createTextNode('fs');
     div.appendChild(text);
     div.className = 'failstack';
-    div.style.backgroundColor = 'gray';
-    div.style.borderColor = 'darkblue';
+    div.style.backgroundColor = 'rgb(66, 66, 66)';
+    div.style.borderColor = 'black';
     table.appendChild(div);
     div = document.createElement('div');
     text = document.createTextNode('cost');
     div.appendChild(text);
     div.className = 'cost';
-    div.style.backgroundColor = 'gray';
-    div.style.borderColor = 'gray';
+    div.style.backgroundColor = 'rgb(66, 66, 66)';
+    div.style.borderColor = 'rgb(66, 66, 66)';
     table.appendChild(div);
 
     for (x in costs) {
