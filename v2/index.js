@@ -5,6 +5,11 @@
 		-
 */
 
+/*
+	IDEAS
+		- Ammar said: blank out the inputs on the left when you select something that those don't pertain to
+*/
+
 // =============================================================
 // Global Variables
 
@@ -60,6 +65,7 @@ const load_stuff = () => {
     generateFailstackCosts();
     generateAccessoryChances();
     generateArmorChances();
+    generateWeaponChances();
     console.log('Loading Successful :D');
 };
 
@@ -78,7 +84,6 @@ const generateFailstackCosts = () => {
     }
 };
 
-// Has been tested and correctly gives you the success values
 const generateAccessoryChances = () => {
     SUCCESS_ACCESSORIES[0] = new Array();
 
@@ -272,13 +277,147 @@ const generateArmorChances = () => {
     }
 };
 
+const generateWeaponChances = () => {
+    SUCCESS_ARMOR[0] = new Array();
+    let prevValue = new Array(15);
+    let incOfInc = new Array(15);
+
+    // setting the base success chance
+    SUCCESS_ARMOR[0]['+6'] = 0.7;
+    SUCCESS_ARMOR[0]['+7'] = 0.2564;
+    SUCCESS_ARMOR[0]['+8'] = 0.1724;
+    SUCCESS_ARMOR[0]['+9'] = 0.1176;
+    SUCCESS_ARMOR[0]['+10'] = 0.0769;
+    SUCCESS_ARMOR[0]['+11'] = 0.0625;
+    SUCCESS_ARMOR[0]['+12'] = 0.05;
+    SUCCESS_ARMOR[0]['+13'] = 0.04;
+    SUCCESS_ARMOR[0]['+14'] = 0.0286;
+    SUCCESS_ARMOR[0]['+15'] = 0.02;
+    SUCCESS_ARMOR[0]['PRI'] = 0.1176;
+    SUCCESS_ARMOR[0]['DUO'] = 0.0769;
+    SUCCESS_ARMOR[0]['TRI'] = 0.0625;
+    SUCCESS_ARMOR[0]['TET'] = 0.02;
+    SUCCESS_ARMOR[0]['PEN'] = 0.003;
+
+    // fs = failstack
+    for (let fs = 1; fs < 121; fs++) {
+        SUCCESS_ARMOR[fs] = new Array();
+
+        let counter = 0;
+        for (let key in SUCCESS_ARMOR[fs - 1]) {
+            prevValue[counter] = SUCCESS_ARMOR[fs - 1][key];
+            counter += 1;
+        }
+
+        // for +6
+        if (fs < 15) {
+            // increase of increase
+            incOfInc[0] = 0.014;
+        } else if (fs == 15) {
+            incOfInc[0] = 0.004;
+        } else {
+            incOfInc[0] = 0;
+        }
+
+        // for +7
+        if (fs <= 18) {
+            incOfInc[1] = 0.0257;
+        } else if (fs < 54) {
+            incOfInc[1] = 0.0051;
+        } else if (fs == 54) {
+            incOfInc[1] = 0.0026;
+        } else {
+            incOfInc[1] = 0;
+        }
+
+        // for +8
+        if (fs <= 31) {
+            incOfInc[2] = 0.0173;
+        } else if (fs <= 87) {
+            incOfInc[2] = 0.0035;
+        } else if (fs == 88) {
+            incOfInc[2] = 0.0001;
+        } else {
+            incOfInc[2] = 0;
+        }
+
+        // for +9
+        if (fs <= 50) {
+            incOfInc[3] = 0.0118;
+        } else {
+            incOfInc[3] = 0.0023;
+        }
+
+        // for +10
+        if (fs <= 82) {
+            incOfInc[4] = 0.0077;
+        } else {
+            incOfInc[4] = 0.0015;
+        }
+
+        // for +11
+        if (fs <= 102) {
+            incOfInc[5] = 0.0062;
+        } else {
+            incOfInc[5] = 0.0013;
+        }
+
+        // for +12
+        incOfInc[6] = 0.005;
+
+        // for +13
+        incOfInc[7] = 0.004;
+
+        // for +14
+        incOfInc[8] = 0.0028;
+
+        // for +15
+        incOfInc[9] = 0.002;
+
+        // for PRI
+        if (fs <= 50) {
+            incOfInc[10] = 0.0117;
+        } else {
+            incOfInc[10] = 0.0023;
+        }
+
+        // for DUO
+        if (fs <= 82) {
+            incOfInc[11] = 0.0077;
+        } else {
+            incOfInc[11] = 0.0015;
+        }
+
+        // for TRI
+        if (fs <= 102) {
+            incOfInc[12] = 0.0062;
+        } else {
+            incOfInc[12] = 0.0012;
+        }
+
+        // for TET
+        incOfInc[13] = 0.002;
+
+        // for PEN
+        incOfInc[14] = 0.0003;
+
+        counter = 0;
+        for (let key in SUCCESS_ARMOR[fs - 1]) {
+            SUCCESS_ARMOR[fs][key] = fixRoundOff(
+                prevValue[counter] + incOfInc[counter]
+            );
+            counter += 1;
+        }
+    }
+};
+
 // rounds the number the given amount of decimal places
 const fixRoundOff = (number, decimal = 4) => {
     return Math.trunc(number * Math.pow(10, decimal)) / Math.pow(10, decimal);
 };
 
 // =============================================================
-// STUFF THAT RUNS WHEN YOU CLICK CALCULATE BUTTON
+// STUFF THAT RUNS WHEN YOU CLICK CALCULATE BUTTON OR CHANGE INPUTS
 const calculate = () => {
     console.log('Calculating...');
 
@@ -324,18 +463,11 @@ const updateItemCosts = () => {
     let typeSelect = document.getElementsByClassName('type-select')[0].value;
     let errorMsg = '';
 
-    // base item only required for options accessory and functional clothing
-    //ITEM_COSTS.baseItem = 3030000;
-    //ITEM_COSTS.preEnhanceItem = 12200000;
-    //ITEM_COSTS.postEnhanceItem = 64000000;
-
-    if (typeSelect == 'Accessory' || typeSelect == 'Functional Clothes') {
-        newValue = itemCostInputs[0].value;
-        if (newValue) {
-            ITEM_COSTS.baseItem = Number(newValue);
-        } else {
-            errorMsg += 'Base Item ';
-        }
+    newValue = itemCostInputs[0].value;
+    if (newValue) {
+        ITEM_COSTS.baseItem = Number(newValue);
+    } else {
+        errorMsg += 'Base Item ';
     }
 
     newValue = itemCostInputs[1].value;
@@ -354,7 +486,6 @@ const updateItemCosts = () => {
 
     // can improve this a lot maybe display psedu elements next to input
     if (errorMsg) {
-        alert('MISSING: ' + errorMsg);
         return false;
     }
 
