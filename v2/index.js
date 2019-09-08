@@ -8,6 +8,8 @@
 /*
 	IDEAS
 		- Ammar said: blank out the inputs on the left when you select something that those don't pertain to
+		- Elbarya: said make yellow a checkbox
+		- Elbayra: only scroll through the table not the whole page
 */
 
 // =============================================================
