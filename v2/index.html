@@ -96,6 +96,7 @@
                     <select class="type-select" onchange="updateLevel(this)">
                         <option>Accessory</option>
                         <option>Armor</option>
+                        <option>Weapon</option>
                     </select>
                 </div>
                 <div class="level-dropdown dropdown">
@@ -126,16 +127,11 @@
                 <div class="three-dots"></div>
                 <div>
                     <label>Base Item</label><br />
-                    <input
-                        oninput="calculate()"
-                        class="base-item item-cost-input"
-                        type="number"
-                    />
+                    <input class="base-item item-cost-input" type="number" />
                 </div>
                 <div>
                     <label>Pre-Enhance Item</label><br />
                     <input
-                        oninput="calculate()"
                         class="pre-enhance-item item-cost-input"
                         type="number"
                     />
@@ -143,7 +139,6 @@
                 <div>
                     <label>Post-Enhance Item</label><br />
                     <input
-                        oninput="calculate()"
                         class="post-enhance-item item-cost-input"
                         type="number"
                     />

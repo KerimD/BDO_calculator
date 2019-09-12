@@ -10,6 +10,8 @@
 		- Ammar said: blank out the inputs on the left when you select something that those don't pertain to
 		- Elbarya: said make yellow a checkbox
 		- Elbayra: only scroll through the table not the whole page
+		maybe disable auto re calculate on input change for mobile view
+		- BAYCEL: make multipe tables
 */
 
 // =============================================================
@@ -280,40 +282,37 @@ const generateArmorChances = () => {
 };
 
 const generateWeaponChances = () => {
-    SUCCESS_ARMOR[0] = new Array();
-    let prevValue = new Array(15);
-    let incOfInc = new Array(15);
+    SUCCESS_WEAPONS[0] = new Array();
+    let prevValue = new Array(13);
+    let incOfInc = new Array(13);
 
     // setting the base success chance
-    SUCCESS_ARMOR[0]['+6'] = 0.7;
-    SUCCESS_ARMOR[0]['+7'] = 0.2564;
-    SUCCESS_ARMOR[0]['+8'] = 0.1724;
-    SUCCESS_ARMOR[0]['+9'] = 0.1176;
-    SUCCESS_ARMOR[0]['+10'] = 0.0769;
-    SUCCESS_ARMOR[0]['+11'] = 0.0625;
-    SUCCESS_ARMOR[0]['+12'] = 0.05;
-    SUCCESS_ARMOR[0]['+13'] = 0.04;
-    SUCCESS_ARMOR[0]['+14'] = 0.0286;
-    SUCCESS_ARMOR[0]['+15'] = 0.02;
-    SUCCESS_ARMOR[0]['PRI'] = 0.1176;
-    SUCCESS_ARMOR[0]['DUO'] = 0.0769;
-    SUCCESS_ARMOR[0]['TRI'] = 0.0625;
-    SUCCESS_ARMOR[0]['TET'] = 0.02;
-    SUCCESS_ARMOR[0]['PEN'] = 0.003;
+    SUCCESS_WEAPONS[0]['+8'] = 0.7;
+    SUCCESS_WEAPONS[0]['+9'] = 0.2041;
+    SUCCESS_WEAPONS[0]['+10'] = 0.1429;
+    SUCCESS_WEAPONS[0]['+11'] = 0.1;
+    SUCCESS_WEAPONS[0]['+12'] = 0.0667;
+    SUCCESS_WEAPONS[0]['+13'] = 0.04;
+    SUCCESS_WEAPONS[0]['+14'] = 0.025;
+    SUCCESS_WEAPONS[0]['+15'] = 0.02;
+    SUCCESS_WEAPONS[0]['PRI'] = 0.1176;
+    SUCCESS_WEAPONS[0]['DUO'] = 0.0769;
+    SUCCESS_WEAPONS[0]['TRI'] = 0.0625;
+    SUCCESS_WEAPONS[0]['TET'] = 0.02;
+    SUCCESS_WEAPONS[0]['PEN'] = 0.003;
 
     // fs = failstack
     for (let fs = 1; fs < 121; fs++) {
-        SUCCESS_ARMOR[fs] = new Array();
+        SUCCESS_WEAPONS[fs] = new Array();
 
         let counter = 0;
-        for (let key in SUCCESS_ARMOR[fs - 1]) {
-            prevValue[counter] = SUCCESS_ARMOR[fs - 1][key];
+        for (let key in SUCCESS_WEAPONS[fs - 1]) {
+            prevValue[counter] = SUCCESS_WEAPONS[fs - 1][key];
             counter += 1;
         }
 
-        // for +6
-        if (fs < 15) {
-            // increase of increase
+        // for +8
+        if (fs <= 14) {
             incOfInc[0] = 0.014;
         } else if (fs == 15) {
             incOfInc[0] = 0.004;
@@ -321,91 +320,190 @@ const generateWeaponChances = () => {
             incOfInc[0] = 0;
         }
 
-        // for +7
-        if (fs <= 18) {
-            incOfInc[1] = 0.0257;
-        } else if (fs < 54) {
-            incOfInc[1] = 0.0051;
-        } else if (fs == 54) {
-            incOfInc[1] = 0.0026;
+        // for +9
+        if (fs <= 25) {
+            incOfInc[1] = 0.0205;
+        } else if (fs <= 70) {
+            incOfInc[1] = 0.004;
+        } else if (fs == 71) {
+            incOfInc[1] = 0.002;
         } else {
             incOfInc[1] = 0;
         }
 
-        // for +8
-        if (fs <= 31) {
-            incOfInc[2] = 0.0173;
-        } else if (fs <= 87) {
-            incOfInc[2] = 0.0035;
-        } else if (fs == 88) {
-            incOfInc[2] = 0.0001;
+        // for +10
+        if (fs <= 39) {
+            incOfInc[2] = 0.0142;
+        } else if (fs <= 108) {
+            incOfInc[2] = 0.0028;
+        } else if (fs == 109) {
+            incOfInc[2] = 0.0026;
         } else {
             incOfInc[2] = 0;
         }
 
-        // for +9
-        if (fs <= 50) {
-            incOfInc[3] = 0.0118;
-        } else {
-            incOfInc[3] = 0.0023;
-        }
-
-        // for +10
-        if (fs <= 82) {
-            incOfInc[4] = 0.0077;
-        } else {
-            incOfInc[4] = 0.0015;
-        }
-
         // for +11
-        if (fs <= 102) {
-            incOfInc[5] = 0.0062;
+        if (fs <= 60) {
+            incOfInc[3] = 0.01;
         } else {
-            incOfInc[5] = 0.0013;
+            incOfInc[3] = 0.002;
         }
 
         // for +12
-        incOfInc[6] = 0.005;
+        if (fs <= 95) {
+            incOfInc[4] = 0.0066;
+        } else {
+            incOfInc[4] = 0.0013;
+        }
 
         // for +13
-        incOfInc[7] = 0.004;
+        incOfInc[5] = 0.004;
 
         // for +14
-        incOfInc[8] = 0.0028;
+        incOfInc[6] = 0.0025;
 
         // for +15
-        incOfInc[9] = 0.002;
+        incOfInc[7] = 0.002;
 
         // for PRI
         if (fs <= 50) {
-            incOfInc[10] = 0.0117;
+            incOfInc[8] = 0.0117;
         } else {
-            incOfInc[10] = 0.0023;
+            incOfInc[8] = 0.0023;
         }
 
         // for DUO
         if (fs <= 82) {
-            incOfInc[11] = 0.0077;
+            incOfInc[9] = 0.0077;
         } else {
-            incOfInc[11] = 0.0015;
+            incOfInc[9] = 0.0015;
         }
 
         // for TRI
         if (fs <= 102) {
-            incOfInc[12] = 0.0062;
+            incOfInc[10] = 0.0062;
         } else {
-            incOfInc[12] = 0.0012;
+            incOfInc[10] = 0.0012;
         }
 
         // for TET
-        incOfInc[13] = 0.002;
+        incOfInc[11] = 0.002;
 
         // for PEN
-        incOfInc[14] = 0.0003;
+        incOfInc[11] = 0.0003;
 
         counter = 0;
-        for (let key in SUCCESS_ARMOR[fs - 1]) {
-            SUCCESS_ARMOR[fs][key] = fixRoundOff(
+        for (let key in SUCCESS_WEAPONS[fs - 1]) {
+            SUCCESS_WEAPONS[fs][key] = fixRoundOff(
+                prevValue[counter] + incOfInc[counter]
+            );
+            counter += 1;
+        }
+    }
+};
+
+const generateFunctionalClothesChance = () => {
+    SUCCESS_WEAPONS[0] = new Array();
+    let prevValue = new Array(5);
+    let incOfInc = new Array(5);
+
+    // setting the base success chance
+    SUCCESS_FUNCTIONAL_CLOTHES[0]['+1'] = 0.3;
+
+    // fs = failstack
+    for (let fs = 1; fs < 121; fs++) {
+        SUCCESS_WEAPONS[fs] = new Array();
+
+        let counter = 0;
+        for (let key in SUCCESS_WEAPONS[fs - 1]) {
+            prevValue[counter] = SUCCESS_WEAPONS[fs - 1][key];
+            counter += 1;
+        }
+
+        // for +8
+        if (fs <= 14) {
+            incOfInc[0] = 0.014;
+        } else if (fs == 15) {
+            incOfInc[0] = 0.004;
+        } else {
+            incOfInc[0] = 0;
+        }
+
+        // for +9
+        if (fs <= 25) {
+            incOfInc[1] = 0.0205;
+        } else if (fs <= 70) {
+            incOfInc[1] = 0.004;
+        } else if (fs == 71) {
+            incOfInc[1] = 0.002;
+        } else {
+            incOfInc[1] = 0;
+        }
+
+        // for +10
+        if (fs <= 39) {
+            incOfInc[2] = 0.0142;
+        } else if (fs <= 108) {
+            incOfInc[2] = 0.0028;
+        } else if (fs == 109) {
+            incOfInc[2] = 0.0026;
+        } else {
+            incOfInc[2] = 0;
+        }
+
+        // for +11
+        if (fs <= 60) {
+            incOfInc[3] = 0.01;
+        } else {
+            incOfInc[3] = 0.002;
+        }
+
+        // for +12
+        if (fs <= 95) {
+            incOfInc[4] = 0.0066;
+        } else {
+            incOfInc[4] = 0.0013;
+        }
+
+        // for +13
+        incOfInc[5] = 0.004;
+
+        // for +14
+        incOfInc[6] = 0.0025;
+
+        // for +15
+        incOfInc[7] = 0.002;
+
+        // for PRI
+        if (fs <= 50) {
+            incOfInc[8] = 0.0117;
+        } else {
+            incOfInc[8] = 0.0023;
+        }
+
+        // for DUO
+        if (fs <= 82) {
+            incOfInc[9] = 0.0077;
+        } else {
+            incOfInc[9] = 0.0015;
+        }
+
+        // for TRI
+        if (fs <= 102) {
+            incOfInc[10] = 0.0062;
+        } else {
+            incOfInc[10] = 0.0012;
+        }
+
+        // for TET
+        incOfInc[11] = 0.002;
+
+        // for PEN
+        incOfInc[11] = 0.0003;
+
+        counter = 0;
+        for (let key in SUCCESS_WEAPONS[fs - 1]) {
+            SUCCESS_WEAPONS[fs][key] = fixRoundOff(
                 prevValue[counter] + incOfInc[counter]
             );
             counter += 1;
@@ -541,6 +639,42 @@ const calculateCost = fs => {
             upgradeStone = ITEM_COSTS.concentratedMagicalBlackStoneArmor;
         } else {
             upgradeStone = ITEM_COSTS.blackStoneArmor;
+        }
+
+        let durabilityCost;
+        if (currGrade == 'Yellow') {
+            durabilityCost = 10 * ITEM_COSTS.memoryFragment;
+        } else {
+            durabilityCost = ITEM_COSTS.baseItem;
+        }
+
+        cost =
+            fail *
+                (COST_OF_FAILSTACKS[fs + 1] -
+                    durabilityCost -
+                    upgradeStone -
+                    ITEM_COSTS.preEnhanceItem -
+                    COST_OF_FAILSTACKS[fs]) +
+            success *
+                (ITEM_COSTS.postEnhanceItem -
+                    upgradeStone -
+                    ITEM_COSTS.preEnhanceItem -
+                    COST_OF_FAILSTACKS[fs]);
+    } else if (currType == 'Weapon') {
+        success = SUCCESS_WEAPONS[fs][currLevel];
+        fail = 1 - success;
+
+        let upgradeStone;
+        if (
+            currLevel == 'PRI' ||
+            currLevel == 'DUO' ||
+            currLevel == 'TRI' ||
+            currLevel == 'TET' ||
+            currLevel == 'PEN'
+        ) {
+            upgradeStone = ITEM_COSTS.concentratedMagicalBlackStoneWeapon;
+        } else {
+            upgradeStone = ITEM_COSTS.blackStoneWeapon;
         }
 
         let durabilityCost;
