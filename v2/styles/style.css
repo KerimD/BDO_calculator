@@ -275,7 +275,7 @@ main .fs-table .table-title .cost-title {
 }
 
 main .fs-table .values-fs-table {
-  height: 36em;
+  height: 37em;
   display: -ms-grid;
   display: grid;
   justify-items: stretch;

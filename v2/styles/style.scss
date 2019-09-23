@@ -277,7 +277,7 @@ main {
         }
 
         .values-fs-table {
-            height: 36em;
+            height: 37em;
             display: grid;
             justify-items: stretch;
             grid-template-columns: repeat(2, auto);
@@ -326,10 +326,6 @@ footer {
 
         button {
             justify-self: right;
-        }
-
-        .fs-table {
-            // margin: none;
         }
     }
 

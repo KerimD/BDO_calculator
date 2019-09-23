@@ -1,15 +1,22 @@
 /* Deniz Kerim */
 
 /*
+	TO DO
+		- Meta tags or something
+		- post the website
+		- get some kind of statistics or something with google
+*/
+
+/*
 	BUGS
-		-
+		- Make good for 4k screens
 */
 
 /*
 	IDEAS
 		- Ammar said: blank out the inputs on the left when you select something that those don't pertain to
 		- Elbarya: said make yellow a checkbox (DONE)
-		- Elbayra: only scroll through the table not the whole page
+		- Elbayra: only scroll through the table not the whole page (DONE)
 		maybe disable auto re calculate on input change for mobile view
 		- BAYCEL: make multipe tables
 */
@@ -26,7 +33,7 @@ const ITEM_COSTS = {
     hardBlackCrystalShard: 1600000,
     concentratedMagicalBlackStoneWeapon: 3980000,
     concentratedMagicalBlackStoneArmor: 2240000,
-    baseItem: null, // only for accessories
+    baseItem: null,
     preEnhanceItem: null,
     postEnhanceItem: null
 };
