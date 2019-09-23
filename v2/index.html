@@ -23,7 +23,7 @@
                     <input
                         type="checkbox"
                         class="sort-checkbox"
-                        onclick="calculate()"
+						onclick="calculate()"
                     />
                     Sort Table
                 </label>
@@ -109,16 +109,8 @@
                         <option>PEN</option>
                     </select>
                 </div>
-                <div class="Grade-dropdown dropdown">
-                    <h3>Select Grade</h3>
-                    <select
-                        style="background: gray"
-                        class="grade-select"
-                        disabled
-                    >
-                        <option>Yellow</option>
-                        <option>not Yellow</option>
-                    </select>
+                <div class="checkbox-section">
+                    <input class="grade-checkbox" type="checkbox" disabled>Yellow</input>
                 </div>
             </section>
 
@@ -147,7 +139,13 @@
 
             <button onclick="calculate()">Calculate</button>
 
-            <section class="fs-table"></section>
+            <section class="fs-table">
+				<div class="table-title">
+					<div class="failstack-title">Fs</div>
+					<div class="cost-title">Cost</div>
+				</div>
+				<div class="values-fs-table"></div>
+			</section>
         </main>
 
         <footer></footer>

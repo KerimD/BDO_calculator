@@ -8,7 +8,7 @@
 /*
 	IDEAS
 		- Ammar said: blank out the inputs on the left when you select something that those don't pertain to
-		- Elbarya: said make yellow a checkbox
+		- Elbarya: said make yellow a checkbox (DONE)
 		- Elbayra: only scroll through the table not the whole page
 		maybe disable auto re calculate on input change for mobile view
 		- BAYCEL: make multipe tables
@@ -527,10 +527,9 @@ const calculate = () => {
     }
 
     let costs = calculateCosts();
-    let sortedCosts = kindaMergeSort([...costs]);
 
     if (document.getElementsByClassName('sort-checkbox')[0].checked) {
-        displayFSTable(sortedCosts.reverse());
+        displayFSTable(quickSort([...costs]));
     } else {
         displayFSTable(costs);
     }
@@ -605,7 +604,7 @@ const calculateCosts = () => {
 const calculateCost = fs => {
     let currType = document.getElementsByClassName('type-select')[0].value;
     let currLevel = document.getElementsByClassName('level-select')[0].value;
-    let currGrade = document.getElementsByClassName('grade-select')[0].value;
+    let yellow = document.getElementsByClassName('grade-checkbox')[0].checked;
     let cost, success, fail;
 
     if (currType == 'Accessory') {
@@ -642,7 +641,7 @@ const calculateCost = fs => {
         }
 
         let durabilityCost;
-        if (currGrade == 'Yellow') {
+        if (yellow) {
             durabilityCost = 10 * ITEM_COSTS.memoryFragment;
         } else {
             durabilityCost = ITEM_COSTS.baseItem;
@@ -678,7 +677,7 @@ const calculateCost = fs => {
         }
 
         let durabilityCost;
-        if (currGrade == 'Yellow') {
+        if (yellow) {
             durabilityCost = 10 * ITEM_COSTS.memoryFragment;
         } else {
             durabilityCost = ITEM_COSTS.baseItem;
@@ -701,41 +700,82 @@ const calculateCost = fs => {
     return cost;
 };
 
-const kindaMergeSort = costs => {
-    let mid = returnMaxIdx(costs);
-    let i = 0,
-        j = 0,
-        k = 0;
+const quickSort = costs => {
+    if (costs.length < 2) return costs;
 
-    L = costs.slice(0, mid);
-    R = costs.slice(mid, costs.length);
-    R.reverse();
+    let tempCost,
+        pivot = costs.length - 1,
+        i = 0,
+        j = costs.length - 2;
 
-    while (i < L.length && j < R.length) {
-        if (L[i][1] < R[j][1]) {
-            costs[k] = L[i];
-            i += 1;
-        } else {
-            costs[k] = R[j];
-            j += 1;
+    while (!(i > j)) {
+        while (!(i > costs.length - 1) && costs[i][1] > costs[pivot][1]) {
+            i++;
         }
-        k += 1;
+        while (!(j < 0) && costs[j][1] < costs[pivot][1]) {
+            j--;
+        }
+        if (!(i > j)) {
+            tempCost = costs[i];
+            costs[i] = costs[j];
+            costs[j] = tempCost;
+            i++;
+            j--;
+        }
     }
 
-    while (i < L.length) {
-        costs[k] = L[i];
-        i += 1;
-        k += 1;
-    }
+    tempCost = costs[i];
+    costs[i] = costs[pivot];
+    costs[pivot] = tempCost;
+    pivot = i;
 
-    while (j < R.length) {
-        costs[k] = R[j];
-        j += 1;
-        k += 1;
-    }
-
-    return costs;
+    return [
+        ...quickSort(costs.slice(0, pivot)),
+        costs[pivot],
+        ...quickSort(costs.slice(pivot + 1, costs.length))
+    ];
 };
+
+// const mergeSort = costs => {
+//     if (costs.length > 1) {
+//         let mid = parseInt(costs.length / 2);
+
+//         L = costs.slice(0, mid);
+//         R = costs.slice(mid, costs.length);
+
+//         L = mergeSort(L);
+//         R = mergeSort(R);
+
+//         let i = 0,
+//             j = 0,
+//             k = 0;
+
+//         while (i < L.length && j < R.length) {
+//             if (L[i][1] < R[j][1]) {
+//                 costs[k] = L[i];
+//                 i += 1;
+//             } else {
+//                 costs[k] = R[j];
+//                 j += 1;
+//             }
+//             k += 1;
+//         }
+
+//         while (i < L.length) {
+//             costs[k] = L[i];
+//             i += 1;
+//             k += 1;
+//         }
+
+//         while (j < R.length) {
+//             costs[k] = R[j];
+//             j += 1;
+//             k += 1;
+//         }
+//     }
+
+//     return costs;
+// };
 
 const returnMaxIdx = list => {
     let max_idx = 0;
@@ -752,26 +792,11 @@ const returnMaxIdx = list => {
 };
 
 const displayFSTable = costs => {
-    let table = document.getElementsByClassName('fs-table')[0];
+    let table = document.getElementsByClassName('values-fs-table')[0];
     let counter = 0;
 
     // reset table
     table.innerHTML = '';
-
-    div = document.createElement('div');
-    text = document.createTextNode('Fs');
-    div.appendChild(text);
-    div.className = 'failstack';
-    div.style.backgroundColor = 'rgb(63, 63, 63)';
-    div.style.borderColor = 'black';
-    table.appendChild(div);
-    div = document.createElement('div');
-    text = document.createTextNode('Cost');
-    div.appendChild(text);
-    div.className = 'cost';
-    div.style.backgroundColor = 'rgb(63, 63, 63)';
-    div.style.border = 'none';
-    table.appendChild(div);
 
     for (x in costs) {
         div = document.createElement('div');
@@ -819,16 +844,14 @@ const updateLevel = selectDropdown => {
     let tempOption;
 
     // disable grade dropdown for certain types of items
-    let gradeSelect = document.getElementsByClassName('grade-select')[0];
+    let gradeSelect = document.getElementsByClassName('grade-checkbox')[0];
     if (
         selectDropdown.value == 'Accessory' ||
         selectDropdown.value == 'Functional Clothes'
     ) {
         gradeSelect.disabled = true;
-        gradeSelect.style.background = 'gray';
     } else {
         gradeSelect.disabled = false;
-        gradeSelect.style.background = 'white';
     }
 
     // reset dropdown

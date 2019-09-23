@@ -95,7 +95,7 @@ main .main-section .three-dots::before, main .main-section .three-dots::after {
 }
 
 main .main-section .three-dots::before {
-  background: coral;
+  background: #3f3f3f;
   height: 15px;
   width: 15px;
   bottom: -4px;
@@ -106,8 +106,8 @@ main .main-section .three-dots::after {
   background: white;
   height: 10px;
   width: 10px;
-  bottom: -8px;
-  left: -8px;
+  bottom: -2px;
+  left: -2px;
 }
 
 main .main-section div {
@@ -118,10 +118,10 @@ main .main-section div input {
   background: #1e1e1e;
   color: white;
   margin-top: 0.3em;
-  padding-left: 10px;
-  border: none;
-  border-left: 3px solid #00f7ff;
+  padding: 5px 0 5px 10px;
   width: 10em;
+  border-radius: 10px;
+  border-color: #00f7ff;
 }
 
 main .advanced-values {
@@ -130,9 +130,9 @@ main .advanced-values {
   grid-area: advanced-options;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 1fr (auto)[8];
-      grid-template-rows: 1fr repeat(8, auto);
-  grid-row-gap: 1em;
+  -ms-grid-rows: (auto)[9];
+      grid-template-rows: repeat(9, auto);
+  grid-row-gap: 0.5em;
 }
 
 main .advanced-values label {
@@ -145,7 +145,7 @@ main .advanced-values .sort-label {
 
 main .advanced-values .sort-label .sort-checkbox {
   cursor: pointer;
-  margin: none;
+  margin: 0 0.5em 0 0;
   padding: none;
   border: none;
   width: auto;
@@ -157,8 +157,8 @@ main .dropdowns {
   grid-area: dropdowns;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 1fr (auto)[2];
-      grid-template-rows: 1fr repeat(2, auto);
+  -ms-grid-rows: (auto)[4];
+      grid-template-rows: repeat(4, auto);
   grid-row-gap: 1em;
 }
 
@@ -176,9 +176,9 @@ main .dropdowns .level-dropdown span {
   text-decoration: underline;
   position: relative;
   color: #00f7ff;
-  margin-left: 0.5em;
+  margin-left: 0.3em;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 main .dropdowns .level-dropdown span::after {
@@ -197,14 +197,23 @@ main .dropdowns .level-dropdown span:hover::after, main .dropdowns .level-dropdo
   display: inline-block;
 }
 
+main .checkbox-section .grade-checkbox {
+  cursor: pointer;
+  margin: 0 0.5em 0 0;
+  padding-left: 0;
+  border: none;
+  width: auto;
+  color: black;
+}
+
 main .item-costs {
   -ms-grid-row: 4;
   -ms-grid-column: 1;
   grid-area: item-costs;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 1fr (auto)[3];
-      grid-template-rows: 1fr repeat(3, auto);
+  -ms-grid-rows: (auto)[4];
+      grid-template-rows: repeat(4, auto);
   grid-row-gap: 1em;
 }
 
@@ -218,8 +227,9 @@ main button {
   -ms-grid-row: 5;
   -ms-grid-column: 1;
   grid-area: button;
+  font-weight: 600;
   background: #00f7ff;
-  color: white;
+  color: black;
   padding: 0.5em 1em;
   border: 2px solid #00f7ff;
   border-radius: 10px;
@@ -227,6 +237,7 @@ main button {
 
 main button:hover {
   background: black;
+  color: #00f7ff;
 }
 
 main .fs-table {
@@ -235,24 +246,51 @@ main .fs-table {
   -ms-grid-row: 6;
   -ms-grid-column: 1;
   grid-area: table;
-  display: none;
-  justify-items: stretch;
-  -ms-grid-columns: (auto)[2];
-      grid-template-columns: repeat(2, auto);
 }
 
 main .fs-table .table-title {
-  display: block;
+  background: #3f3f3f;
+  display: -ms-grid;
+  display: grid;
+  justify-items: stretch;
+  -ms-grid-columns: (auto)[5];
+      grid-template-columns: repeat(5, auto);
+      grid-template-areas: 'fs cost . . .';
 }
 
-main .fs-table .failstack {
+main .fs-table .table-title .failstack-title {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: fs;
+  text-align: center;
+  padding: 0.5em;
+}
+
+main .fs-table .table-title .cost-title {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: cost;
+  padding: 0.5em;
+}
+
+main .fs-table .values-fs-table {
+  height: 36em;
+  display: -ms-grid;
+  display: grid;
+  justify-items: stretch;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  overflow: auto;
+}
+
+main .fs-table .values-fs-table .failstack {
   text-align: center;
   padding: 0.5em;
   border: none;
   border-right: 2px solid black;
 }
 
-main .fs-table .cost {
+main .fs-table .values-fs-table .cost {
   padding: 0.5em;
   border: none;
   border-right: 20px solid black;
@@ -278,7 +316,7 @@ main .fs-table .cost {
 
 @media only screen and (min-width: 900px) {
   main {
-        grid-template-areas: 'title button table' 'advanced-options dropdowns table' 'advanced-options item-costs table' '. . table' '. . .' '. . .';
+        grid-template-areas: 'title button table' 'advanced-options dropdowns table' 'advanced-options item-costs table' '. . .' '. . .' '. . .';
   }
 }
 /*# sourceMappingURL=style.css.map */

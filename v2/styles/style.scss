@@ -106,7 +106,7 @@ main {
             }
 
             &::before {
-                background: coral;
+                background: $background-color;
                 height: 15px;
                 width: 15px;
                 bottom: -4px;
@@ -117,8 +117,8 @@ main {
                 background: white;
                 height: 10px;
                 width: 10px;
-                bottom: -8px;
-                left: -8px;
+                bottom: -2px;
+                left: -2px;
             }
         }
 
@@ -129,19 +129,28 @@ main {
                 background: rgb(30, 30, 30);
                 color: white;
                 margin-top: 0.3em;
-                padding-left: 10px;
-                border: none;
-                border-left: 3px solid $highlight-color;
+                padding: 5px 0 5px 10px;
                 width: 10em;
+                border-radius: 10px;
+                border-color: $highlight-color;
             }
+            // input {
+            //     background: rgb(30, 30, 30);
+            //     color: white;
+            //     margin-top: 0.3em;
+            //     padding-left: 10px;
+            //     border: none;
+            //     border-left: 3px solid $highlight-color;
+            //     width: 10em;
+            // }
         }
     }
 
     .advanced-values {
         grid-area: advanced-options;
         display: grid;
-        grid-template-rows: 1fr repeat(8, auto);
-        grid-row-gap: 1em;
+        grid-template-rows: repeat(9, auto);
+        grid-row-gap: 0.5em;
 
         label {
             font-size: 12px;
@@ -152,7 +161,7 @@ main {
 
             .sort-checkbox {
                 cursor: pointer;
-                margin: none;
+                margin: 0 0.5em 0 0;
                 padding: none;
                 border: none;
                 width: auto;
@@ -163,7 +172,7 @@ main {
     .dropdowns {
         grid-area: dropdowns;
         display: grid;
-        grid-template-rows: 1fr repeat(2, auto);
+        grid-template-rows: repeat(4, auto);
         grid-row-gap: 1em;
 
         h3 {
@@ -181,9 +190,9 @@ main {
             position: relative;
             color: $highlight-color;
             //color: rgb(77, 77, 255);
-            margin-left: 0.5em;
+            margin-left: 0.3em;
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 500;
 
             &::after {
                 content: '* Level u r hitting for *';
@@ -204,10 +213,21 @@ main {
         }
     }
 
+    .checkbox-section {
+        .grade-checkbox {
+            cursor: pointer;
+            margin: 0 0.5em 0 0;
+            padding-left: 0;
+            border: none;
+            width: auto;
+            color: black;
+        }
+    }
+
     .item-costs {
         grid-area: item-costs;
         display: grid;
-        grid-template-rows: 1fr repeat(3, auto);
+        grid-template-rows: repeat(4, auto);
         grid-row-gap: 1em;
 
         label {
@@ -218,14 +238,16 @@ main {
     button {
         justify-self: center;
         grid-area: button;
+        font-weight: 600;
         background: $highlight-color;
-        color: white;
+        color: black;
         padding: 0.5em 1em;
         border: 2px solid $highlight-color;
         border-radius: 10px;
 
         &:hover {
             background: black;
+            color: $highlight-color;
         }
     }
 
@@ -233,25 +255,46 @@ main {
         width: 14em;
         margin: 0 auto;
         grid-area: table;
-        display: none;
-        justify-items: stretch;
-        grid-template-columns: repeat(2, auto);
+        // display: none;
 
         .table-title {
-            display: block;
+            background: $background-color;
+            display: grid;
+            justify-items: stretch;
+            grid-template-columns: repeat(5, auto);
+            grid-template-areas: 'fs cost . . .';
+
+            .failstack-title {
+                grid-area: fs;
+                text-align: center;
+                padding: 0.5em;
+            }
+
+            .cost-title {
+                grid-area: cost;
+                padding: 0.5em;
+            }
         }
 
-        .failstack {
-            text-align: center;
-            padding: 0.5em;
-            border: none;
-            border-right: 2px solid black;
-        }
+        .values-fs-table {
+            height: 36em;
+            display: grid;
+            justify-items: stretch;
+            grid-template-columns: repeat(2, auto);
+            overflow: auto;
 
-        .cost {
-            padding: 0.5em;
-            border: none;
-            border-right: 20px solid black;
+            .failstack {
+                text-align: center;
+                padding: 0.5em;
+                border: none;
+                border-right: 2px solid black;
+            }
+
+            .cost {
+                padding: 0.5em;
+                border: none;
+                border-right: 20px solid black;
+            }
         }
     }
 }
@@ -284,6 +327,10 @@ footer {
         button {
             justify-self: right;
         }
+
+        .fs-table {
+            // margin: none;
+        }
     }
 
     footer {
@@ -299,7 +346,7 @@ footer {
             'title button table'
             'advanced-options dropdowns table'
             'advanced-options item-costs table'
-            '. . table'
+            '. . .'
             '. . .'
             '. . .';
     }
