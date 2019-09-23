@@ -836,7 +836,7 @@ const displayFSTable = costs => {
         counter += 1;
     }
 
-    table.style.display = 'grid';
+    document.getElementsByClassName('fs-table')[0].style.display = 'block';
 };
 
 const updateLevel = selectDropdown => {

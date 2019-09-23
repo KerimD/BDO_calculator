@@ -246,6 +246,7 @@ main .fs-table {
   -ms-grid-row: 6;
   -ms-grid-column: 1;
   grid-area: table;
+  display: none;
 }
 
 main .fs-table .table-title {
