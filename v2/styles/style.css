@@ -236,13 +236,16 @@ main button {
 }
 
 main button:hover {
-  background: black;
+  -webkit-transition: background-color 0.5s ease, color 0.5s ease-in-out;
+  transition: background-color 0.5s ease, color 0.5s ease-in-out;
+  background-color: black;
   color: #00f7ff;
 }
 
 main .fs-table {
+  -ms-grid-column-align: center;
+      justify-self: center;
   width: 14em;
-  margin: 0 auto;
   -ms-grid-row: 6;
   -ms-grid-column: 1;
   grid-area: table;

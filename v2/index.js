@@ -3,8 +3,9 @@
 /*
 	TO DO
 		- Meta tags or something
-		- post the website
-		- get some kind of statistics or something with google
+		- Host the website
+		- Analytics from Google
+		- Save previous Inputs
 */
 
 /*
