@@ -186,13 +186,13 @@ main {
         }
 
         .level-dropdown span {
-            text-decoration: underline;
             position: relative;
             color: $highlight-color;
-            //color: rgb(77, 77, 255);
             margin-left: 0.3em;
             font-size: 18px;
             font-weight: 500;
+            vertical-align: super;
+            font-size: smaller;
 
             &::after {
                 content: '* Level u r hitting for *';

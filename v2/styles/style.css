@@ -173,12 +173,13 @@ main .dropdowns select {
 }
 
 main .dropdowns .level-dropdown span {
-  text-decoration: underline;
   position: relative;
   color: #00f7ff;
   margin-left: 0.3em;
   font-size: 18px;
   font-weight: 500;
+  vertical-align: super;
+  font-size: smaller;
 }
 
 main .dropdowns .level-dropdown span::after {
