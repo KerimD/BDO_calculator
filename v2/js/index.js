@@ -1,10 +1,8 @@
 /* Deniz Kerim */
 
 /*
-	TO DO
-		- Meta tags or something
-		- Host the website
-		- Analytics from Google
+    TO DO
+        - Give labels for inputs
 		- Save previous Inputs
 */
 
@@ -949,3 +947,11 @@ const updateLevel = selectDropdown => {
         levelSelect.add(tempOption);
     }
 };
+
+const remove_as = location => {
+    if (document.getElementsByClassName("item-cost-input")[location].value) {
+        document.getElementsByClassName("input-field-as")[location].style.display = 'none';
+    } else {
+        document.getElementsByClassName("input-field-as")[location].style.display = 'inline';
+    }
+}

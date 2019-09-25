@@ -37,6 +37,7 @@
                 <h2>Advanced Options</h2>
                 <label class="sort-label">
                     <input
+                        aria-label="Sort Table"
                         type="checkbox"
                         class="sort-checkbox"
 						onclick="calculate()"
@@ -47,6 +48,7 @@
                 <div>
                     <label>Memory Fragment</label><br />
                     <input
+                        aria-label="Memory Fragment"
                         class="advanced-input"
                         type="number"
                         placeholder="2000000"
@@ -55,6 +57,7 @@
                 <div>
                     <label>Black Stone (Weapon)</label><br />
                     <input
+                        aria-label="Black Stone (Weapon)"
                         class="advanced-input"
                         type="number"
                         placeholder="166000"
@@ -63,6 +66,7 @@
                 <div>
                     <label>Black Stone (Armor)</label><br />
                     <input
+                        aria-label="Black Stone (Armor)"
                         class="advanced-input"
                         type="number"
                         placeholder="198000"
@@ -71,6 +75,7 @@
                 <div>
                     <label>Sharp Black Crystal Shard</label><br />
                     <input
+                        aria-label="Sharp Black Crystal Shard"
                         class="advanced-input"
                         type="number"
                         placeholder="3450000"
@@ -79,6 +84,7 @@
                 <div>
                     <label>Hard Black Crystal Shard</label><br />
                     <input
+                        aria-label="Hard Black Crystal Shard"
                         class="advanced-input"
                         type="number"
                         placeholder="1600000"
@@ -88,6 +94,7 @@
                     <label>Concentrated Magical Black Stone (Weapon)</label
                     ><br />
                     <input
+                        aria-label="Concentrated Magical Black Stone (Weapon)"
                         class="advanced-input"
                         type="number"
                         placeholder="3980000"
@@ -97,6 +104,7 @@
                     <label>Concentrated Magical Black Stone (Armor)</label
                     ><br />
                     <input
+                        aria-label="Concentrated Magical Black Stone (Armor)"
                         class="advanced-input"
                         type="number"
                         placeholder="2240000"
@@ -126,7 +134,7 @@
                     </select>
                 </div>
                 <div class="checkbox-section">
-                    <input class="grade-checkbox" type="checkbox" disabled>Yellow</input>
+                    <input aria-label="Yellow Grade?" class="grade-checkbox" type="checkbox" disabled>Yellow</input>
                 </div>
             </section>
 
@@ -135,20 +143,24 @@
                 <div class="three-dots"></div>
                 <div>
                     <label>Base Item<span class="input-field-as"> *</span></label><br />
-                    <input class="base-item item-cost-input" type="number" />
+                    <input aria-label="Base Item" class="base-item item-cost-input" type="number" oninput="remove_as(0)"/>
                 </div>
                 <div>
                     <label>Pre-Enhance Item<span class="input-field-as"> *</span></label><br />
                     <input
+                        aria-label="Pre-Enhance Item"
                         class="pre-enhance-item item-cost-input"
                         type="number"
+                        oninput="remove_as(1)"
                     />
                 </div>
                 <div>
                     <label>Post-Enhance Item<span class="input-field-as"> *</span></label><br />
                     <input
+                        aria-label="Post-Enhance Item"
                         class="post-enhance-item item-cost-input"
                         type="number"
+                        oninput="remove_as(2)"
                     />
                 </div>
             </section>
