@@ -568,31 +568,39 @@ const updateItemCosts = () => {
     // update last 3 inputs. These 3 inputs are required
     let itemCostInputs = document.getElementsByClassName('item-cost-input');
     let typeSelect = document.getElementsByClassName('type-select')[0].value;
+    let as = document.getElementsByClassName('input-field-as');
     let errorMsg = '';
 
     newValue = itemCostInputs[0].value;
     if (newValue) {
         ITEM_COSTS.baseItem = Number(newValue);
+        as[0].style.display = 'none';
     } else {
-        errorMsg += 'Base Item ';
+        errorMsg = 'Please fill in all required inputs';
+        as[0].style.display = 'inline';
     }
 
     newValue = itemCostInputs[1].value;
     if (newValue) {
         ITEM_COSTS.preEnhanceItem = Number(newValue);
+        as[1].style.display = 'none';
     } else {
-        errorMsg += 'Pre-Enhance Item ';
+        errorMsg = 'Please fill in all required inputs';
+        as[1].style.display = 'inline';
     }
 
     newValue = itemCostInputs[2].value;
     if (newValue) {
         ITEM_COSTS.postEnhanceItem = Number(newValue);
+        as[2].style.display = 'none';
     } else {
-        errorMsg += 'Post-Enhance Item';
+        errorMsg = 'Please fill in all required inputs';
+        as[2].style.display = 'inline';
     }
 
     // can improve this a lot maybe display psedu elements next to input
     if (errorMsg) {
+        alert(errorMsg);
         return false;
     }
 

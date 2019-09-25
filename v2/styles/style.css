@@ -222,6 +222,10 @@ main .item-costs label {
   font-size: 14px;
 }
 
+main .item-costs label span {
+  color: red;
+}
+
 main button {
   -ms-grid-column-align: center;
       justify-self: center;
