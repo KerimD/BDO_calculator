@@ -34,7 +34,7 @@
 }
 
 body {
-  background: #292929;
+  background: black;
   color: white;
 }
 
@@ -59,7 +59,7 @@ main h1 {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: title;
-  background: #3f3f3f;
+  background: #464646;
   padding: 0.5em 1em;
   border-radius: 10px;
   font-size: 20px;
@@ -68,7 +68,7 @@ main h1 {
 
 main .main-section {
   position: relative;
-  background: #3f3f3f;
+  background: #464646;
   padding: 1em 1em 2em;
   border-radius: 10px;
 }
@@ -80,7 +80,7 @@ main .main-section h2 {
 
 main .main-section .three-dots {
   position: absolute;
-  background: #00f7ff;
+  background: cyan;
   height: 20px;
   width: 20px;
   top: 20px;
@@ -95,7 +95,7 @@ main .main-section .three-dots::before, main .main-section .three-dots::after {
 }
 
 main .main-section .three-dots::before {
-  background: #3f3f3f;
+  background: #464646;
   height: 15px;
   width: 15px;
   bottom: -4px;
@@ -121,7 +121,8 @@ main .main-section div input {
   padding: 5px 0 5px 10px;
   width: 10em;
   border-radius: 10px;
-  border-color: #00f7ff;
+  border-color: cyan;
+  border-width: 3px;
 }
 
 main .advanced-values {
@@ -174,7 +175,7 @@ main .dropdowns select {
 
 main .dropdowns .level-dropdown span {
   position: relative;
-  color: #00f7ff;
+  color: cyan;
   margin-left: 0.3em;
   font-size: 18px;
   font-weight: 500;
@@ -187,7 +188,7 @@ main .dropdowns .level-dropdown span::after {
   display: none;
   position: absolute;
   font-size: 14px;
-  color: #00f7ff;
+  color: cyan;
   top: -1.6em;
   left: 0;
   background: black;
@@ -233,10 +234,10 @@ main button {
   -ms-grid-column: 1;
   grid-area: button;
   font-weight: 600;
-  background: #00f7ff;
+  background: cyan;
   color: black;
   padding: 0.5em 1em;
-  border: 2px solid #00f7ff;
+  border: 2px solid cyan;
   border-radius: 10px;
 }
 
@@ -244,7 +245,7 @@ main button:hover {
   -webkit-transition: background-color 0.5s ease, color 0.5s ease-in-out;
   transition: background-color 0.5s ease, color 0.5s ease-in-out;
   background-color: black;
-  color: #00f7ff;
+  color: cyan;
 }
 
 main .fs-table {
@@ -258,7 +259,7 @@ main .fs-table {
 }
 
 main .fs-table .table-title {
-  background: #3f3f3f;
+  background: #464646;
   display: -ms-grid;
   display: grid;
   justify-items: stretch;

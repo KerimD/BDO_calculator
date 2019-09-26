@@ -15,8 +15,8 @@
 	rgb(70, 0, 0);
 */
 
-$background-color: rgb(63, 63, 63);
-$highlight-color: rgb(0, 247, 255);
+$background-color: rgb(70, 70, 70);
+$highlight-color: rgb(0, 255, 255);
 
 * {
     // default values are 1em for some reason
@@ -44,7 +44,8 @@ $highlight-color: rgb(0, 247, 255);
 }
 
 body {
-    background: rgb(41, 41, 41);
+    // background: rgb(41, 41, 41);
+    background: black;
     color: white;
 }
 
@@ -133,6 +134,7 @@ main {
                 width: 10em;
                 border-radius: 10px;
                 border-color: $highlight-color;
+                border-width: 3px;
             }
             // input {
             //     background: rgb(30, 30, 30);

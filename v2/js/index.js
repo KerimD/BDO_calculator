@@ -2,22 +2,26 @@
 
 /*
     TO DO
-        - Give labels for inputs
 		- Save previous Inputs
+		- Custome msg for not filling inputs
 */
 
 /*
 	BUGS
 		- Make good for 4k screens
+		- 
 */
 
 /*
 	IDEAS
-		- Ammar said: blank out the inputs on the left when you select something that those don't pertain to
+		- Ammar said: blank out the inputs on the left when you select
+		  something that those don't pertain to
 		- Elbarya: said make yellow a checkbox (DONE)
 		- Elbayra: only scroll through the table not the whole page (DONE)
-		maybe disable auto re calculate on input change for mobile view
+		- maybe disable auto re calculate on input change for mobile view (DONE)
 		- BAYCEL: make multipe tables
+		- Compare previous inputs so you don't have to recalculate every time
+		- 
 */
 
 // =============================================================
@@ -949,9 +953,13 @@ const updateLevel = selectDropdown => {
 };
 
 const remove_as = location => {
-    if (document.getElementsByClassName("item-cost-input")[location].value) {
-        document.getElementsByClassName("input-field-as")[location].style.display = 'none';
+    if (document.getElementsByClassName('item-cost-input')[location].value) {
+        document.getElementsByClassName('input-field-as')[
+            location
+        ].style.display = 'none';
     } else {
-        document.getElementsByClassName("input-field-as")[location].style.display = 'inline';
+        document.getElementsByClassName('input-field-as')[
+            location
+        ].style.display = 'inline';
     }
-}
+};
