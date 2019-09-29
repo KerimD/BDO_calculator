@@ -3,13 +3,18 @@
 /*
     TO DO
 		- Save previous Inputs
-		- Custome msg for not filling inputs
+        - Custom msg for not filling inputs
+        - Do a better job of centering Fs, Cost
+        - 
 */
 
 /*
 	BUGS
 		- Make good for 4k screens
-		- 
+        - When you click on the input it doesn't go to correct position (seems unfixable)
+        - Information for Select Level is just horrible
+        - Media screen thing is giving sass bugs with css grid
+        - 
 */
 
 /*
@@ -576,33 +581,27 @@ const updateItemCosts = () => {
     newValue = itemCostInputs[0].value;
     if (newValue) {
         ITEM_COSTS.baseItem = Number(newValue);
-        as[0].style.display = 'none';
     } else {
-        errorMsg = 'Please fill in all required inputs';
-        as[0].style.display = 'inline';
+        errorMsg = true;
     }
 
     newValue = itemCostInputs[1].value;
     if (newValue) {
         ITEM_COSTS.preEnhanceItem = Number(newValue);
-        as[1].style.display = 'none';
     } else {
-        errorMsg = 'Please fill in all required inputs';
-        as[1].style.display = 'inline';
+        errorMsg = true;
     }
 
     newValue = itemCostInputs[2].value;
     if (newValue) {
         ITEM_COSTS.postEnhanceItem = Number(newValue);
-        as[2].style.display = 'none';
     } else {
-        errorMsg = 'Please fill in all required inputs';
-        as[2].style.display = 'inline';
+        errorMsg = true;
     }
 
     // can improve this a lot maybe display psedu elements next to input
     if (errorMsg) {
-        alert(errorMsg);
+        // alert(errorMsg);
         return false;
     }
 
@@ -963,3 +962,11 @@ const remove_as = location => {
         ].style.display = 'inline';
     }
 };
+
+const placeComma = value => {
+    let newValue = new Array(value.length + Math.floor((value.length-1)/3));
+    for (let i = 0; i < value.length; i++) {
+        newValue[i] = value[i];
+    }
+    console.log(newValue);
+}

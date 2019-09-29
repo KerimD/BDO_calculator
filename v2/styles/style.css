@@ -34,7 +34,7 @@
 }
 
 body {
-  background: black;
+  background: #777777;
   color: white;
 }
 
@@ -59,7 +59,7 @@ main h1 {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: title;
-  background: #464646;
+  background: #252525;
   padding: 0.5em 1em;
   border-radius: 10px;
   font-size: 20px;
@@ -68,7 +68,7 @@ main h1 {
 
 main .main-section {
   position: relative;
-  background: #464646;
+  background: #252525;
   padding: 1em 1em 2em;
   border-radius: 10px;
 }
@@ -95,7 +95,7 @@ main .main-section .three-dots::before, main .main-section .three-dots::after {
 }
 
 main .main-section .three-dots::before {
-  background: #464646;
+  background: #252525;
   height: 15px;
   width: 15px;
   bottom: -4px;
@@ -115,14 +115,17 @@ main .main-section div {
 }
 
 main .main-section div input {
-  background: #1e1e1e;
+  background: black;
   color: white;
   margin-top: 0.3em;
   padding: 5px 0 5px 10px;
   width: 10em;
+  border: 2px solid;
+  border-top-color: #77ffff;
+  border-left-color: #7dffff;
+  border-right-color: cyan;
+  border-bottom-color: #00dada;
   border-radius: 10px;
-  border-color: cyan;
-  border-width: 3px;
 }
 
 main .advanced-values {
@@ -191,7 +194,7 @@ main .dropdowns .level-dropdown span::after {
   color: cyan;
   top: -1.6em;
   left: 0;
-  background: black;
+  background: #777777;
   width: 11em;
 }
 
@@ -205,7 +208,6 @@ main .checkbox-section .grade-checkbox {
   padding-left: 0;
   border: none;
   width: auto;
-  color: black;
 }
 
 main .item-costs {
@@ -237,15 +239,25 @@ main button {
   background: cyan;
   color: black;
   padding: 0.5em 1em;
-  border: 2px solid cyan;
+  border: 0px;
   border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: background-color 1s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
+  transition: background-color 1s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
+  transition: background-color 1s ease-in-out, color 0.5s ease-in-out, box-shadow .5s ease-in-out;
+  transition: background-color 1s ease-in-out, color 0.5s ease-in-out, box-shadow .5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
 }
 
 main button:hover {
-  -webkit-transition: background-color 0.5s ease, color 0.5s ease-in-out;
-  transition: background-color 0.5s ease, color 0.5s ease-in-out;
+  -webkit-transition: background-color .5s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
+  transition: background-color .5s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
+  transition: background-color .5s ease-in-out, color 0.5s ease-in-out, box-shadow .5s ease-in-out;
+  transition: background-color .5s ease-in-out, color 0.5s ease-in-out, box-shadow .5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
   background-color: black;
   color: cyan;
+  -webkit-box-shadow: -2px 2px 30px 5px cyan;
+          box-shadow: -2px 2px 30px 5px cyan;
 }
 
 main .fs-table {
@@ -259,7 +271,7 @@ main .fs-table {
 }
 
 main .fs-table .table-title {
-  background: #464646;
+  background: #252525;
   display: -ms-grid;
   display: grid;
   justify-items: stretch;
@@ -297,13 +309,13 @@ main .fs-table .values-fs-table .failstack {
   text-align: center;
   padding: 0.5em;
   border: none;
-  border-right: 2px solid black;
+  border-right: 2px solid #777777;
 }
 
 main .fs-table .values-fs-table .cost {
   padding: 0.5em;
   border: none;
-  border-right: 20px solid black;
+  border-right: 20px solid #777777;
 }
 
 @media only screen and (min-width: 640px) {
