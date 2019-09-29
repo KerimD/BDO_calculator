@@ -5,6 +5,7 @@
 		- Save previous Inputs
         - Custom msg for not filling inputs
         - Do a better job of centering Fs, Cost
+        - Commas for numbers
         - 
 */
 
@@ -963,10 +964,53 @@ const remove_as = location => {
     }
 };
 
-const placeComma = value => {
-    let newValue = new Array(value.length + Math.floor((value.length-1)/3));
-    for (let i = 0; i < value.length; i++) {
-        newValue[i] = value[i];
+const placeComma = (value, input_idx) => {
+    // going to create a LL because insertion is clean af ez clap
+    if (value.length > 3) {
+        console.log("do stuff");
+
+        document.getElementsByClassName("input")[input_idx].value = commadValue;
     }
-    console.log(newValue);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+    // value = removeComma(value);
+
+    // if (value.length > 3) {
+    //     let newValue = new Array(value.length + Math.floor((value.length-1)/3));
+    //     let firstComma = (value.length % 3 ? value.length % 3 : 3);
+    //     let value_idx = 0;
+
+    //     for (let i = firstComma; i < newValue.length; i += 4) {
+    //         newValue[i] = ",";
+    //     }
+        
+    //     for (let i = 0; i < newValue.length; i++) {
+    //         if (!(newValue[i])) {
+    //             newValue[i] = value[value_idx];
+    //             value_idx++;
+    //         }
+    //     }
+
+    //     document.getElementsByClassName("input")[input_idx].value = newValue.join("");
+
+        // one pass
+        // for (let i = 0; i < newValue.length; i++) {
+        //     if (i % 3 == firstComma) {
+        //         newValue[i] = ",";
+        //     } else {
+        //         newValue[i] = value[value_idx];
+        //         value_idx++;
+        //     }
+        // }
+        // console.log(newValue);
