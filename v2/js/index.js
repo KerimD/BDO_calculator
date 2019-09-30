@@ -75,8 +75,9 @@ const SUCCESS_FUNCTIONAL_CLOTHES = new Array(121);
 // =============================================================
 // CLASSES
 class commaLinkedList {
-    constructor(digit = null) {
-        this.rootNode = new Node(digit);
+    constructor() {
+        this.rootNode = new Node();
+        this.len = 0;
     }
 
     printList() {
@@ -92,6 +93,11 @@ class commaLinkedList {
     }
 
     insert(digit) {
+        if (this.rootNode.val == null) {
+            this.rootNode.val = digit;
+            return;
+        }
+
         let tempNode = this.rootNode;
 
         while (tempNode.next) {
@@ -100,10 +106,12 @@ class commaLinkedList {
 
         tempNode.next = new Node(digit);
     }
+
+    removeCommas() {}
 }
 
 class Node {
-    constructor(value) {
+    constructor(value = null) {
         this.val = value;
         this.next = null;
     }
@@ -1006,14 +1014,10 @@ const placeComma = (value, input_idx) => {
     if (value.length > 3) {
         LL = new commaLinkedList();
 
-        LL.rootNode = new Node(value[0]);
-        LL.rootNode.next = new Node(value[1]);
-        LL.rootNode.next.next = new Node(value[2]);
-        LL.rootNode.next.next.next = new Node(value[3]);
+        for (let i = 0; i < value.length; i++) {
+            LL.insert(value[i]);
+        }
 
-        // for (let i = 1; i < value.length; i++) {
-        //     console.log('potato');
-        // }
         LL.printList();
 
         // document.getElementsByClassName('input')[input_idx].value = commadValue;
