@@ -59,7 +59,7 @@
                     <label>Black Stone (Weapon)</label><br />
                     <input
                         aria-label="Black Stone (Weapon)"
-                        class="advanced-input"
+                        class="advanced-input input"
                         type="number"
                         placeholder="166000"
                     />
@@ -68,7 +68,7 @@
                     <label>Black Stone (Armor)</label><br />
                     <input
                         aria-label="Black Stone (Armor)"
-                        class="advanced-input"
+                        class="advanced-input input"
                         type="number"
                         placeholder="198000"
                     />
@@ -77,7 +77,7 @@
                     <label>Sharp Black Crystal Shard</label><br />
                     <input
                         aria-label="Sharp Black Crystal Shard"
-                        class="advanced-input"
+                        class="advanced-input input"
                         type="number"
                         placeholder="3450000"
                     />
@@ -86,7 +86,7 @@
                     <label>Hard Black Crystal Shard</label><br />
                     <input
                         aria-label="Hard Black Crystal Shard"
-                        class="advanced-input"
+                        class="advanced-input input"
                         type="number"
                         placeholder="1600000"
                     />
@@ -96,7 +96,7 @@
                     ><br />
                     <input
                         aria-label="Concentrated Magical Black Stone (Weapon)"
-                        class="advanced-input"
+                        class="advanced-input input"
                         type="number"
                         placeholder="3980000"
                     />
@@ -106,7 +106,7 @@
                     ><br />
                     <input
                         aria-label="Concentrated Magical Black Stone (Armor)"
-                        class="advanced-input"
+                        class="advanced-input input"
                         type="number"
                         placeholder="2240000"
                     />
@@ -144,13 +144,13 @@
                 <div class="three-dots"></div>
                 <div>
                     <label>Base Item<span class="input-field-as"> *</span></label><br />
-                    <input aria-label="Base Item" class="base-item item-cost-input" type="number" oninput="remove_as(0)"/>
+                    <input aria-label="Base Item" class="base-item item-cost-input input" type="number" oninput="remove_as(0)"/>
                 </div>
                 <div>
                     <label>Pre-Enhance Item<span class="input-field-as"> *</span></label><br />
                     <input
                         aria-label="Pre-Enhance Item"
-                        class="pre-enhance-item item-cost-input"
+                        class="pre-enhance-item item-cost-input input"
                         type="number"
                         oninput="remove_as(1)"
                     />
@@ -159,14 +159,14 @@
                     <label>Post-Enhance Item<span class="input-field-as"> *</span></label><br />
                     <input
                         aria-label="Post-Enhance Item"
-                        class="post-enhance-item item-cost-input"
+                        class="post-enhance-item item-cost-input input"
                         type="number"
                         oninput="remove_as(2)"
                     />
                 </div>
             </section>
 
-            <button onclick="calculate()">Calculate</button>
+            <button id="calculate-button" onclick="calculate()">Calculate</button>
 
             <section class="fs-table">
 				<div class="table-title">

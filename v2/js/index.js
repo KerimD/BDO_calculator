@@ -123,6 +123,7 @@ const load_stuff = () => {
     generateAccessoryChances();
     generateArmorChances();
     generateWeaponChances();
+    setupEventListeners();
     console.log('Loading Successful :D');
 };
 
@@ -563,6 +564,23 @@ const generateFunctionalClothesChance = () => {
         }
     }
 };
+
+const setupEventListeners = () => {
+    let inputs = document.getElementsByClassName("input");
+
+    for (let input_idx in inputs) {
+        if (inputs.hasOwnProperty(input_idx)) {
+
+            // When hitting enter(keyCode == 13) click calculate button
+            inputs[input_idx].addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    document.getElementById("calculate-button").click();
+                }
+            });
+        }
+    }
+}
 
 // rounds the number the given amount of decimal places
 const fixRoundOff = (number, decimal = 4) => {
