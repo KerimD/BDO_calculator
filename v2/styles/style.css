@@ -34,7 +34,7 @@
 }
 
 body {
-  background: #777777;
+  background: #525252;
   color: white;
 }
 
@@ -59,7 +59,7 @@ main h1 {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: title;
-  background: #252525;
+  background: #272727;
   padding: 0.5em 1em;
   border-radius: 10px;
   font-size: 20px;
@@ -68,7 +68,7 @@ main h1 {
 
 main .main-section {
   position: relative;
-  background: #252525;
+  background: #272727;
   padding: 1em 1em 2em;
   border-radius: 10px;
 }
@@ -95,7 +95,7 @@ main .main-section .three-dots::before, main .main-section .three-dots::after {
 }
 
 main .main-section .three-dots::before {
-  background: #252525;
+  background: #272727;
   height: 15px;
   width: 15px;
   bottom: -4px;
@@ -194,7 +194,7 @@ main .dropdowns .level-dropdown span::after {
   color: cyan;
   top: -1.6em;
   left: 0;
-  background: #777777;
+  background: #525252;
   width: 11em;
 }
 
@@ -271,7 +271,7 @@ main .fs-table {
 }
 
 main .fs-table .table-title {
-  background: #252525;
+  background: #272727;
   display: -ms-grid;
   display: grid;
   justify-items: stretch;
@@ -309,13 +309,13 @@ main .fs-table .values-fs-table .failstack {
   text-align: center;
   padding: 0.5em;
   border: none;
-  border-right: 2px solid #777777;
+  border-right: 2px solid #525252;
 }
 
 main .fs-table .values-fs-table .cost {
   padding: 0.5em;
   border: none;
-  border-right: 20px solid #777777;
+  border-right: 20px solid #525252;
 }
 
 @media only screen and (min-width: 640px) {
