@@ -73,6 +73,43 @@ const SUCCESS_WEAPONS = new Array(121);
 const SUCCESS_FUNCTIONAL_CLOTHES = new Array(121);
 
 // =============================================================
+// CLASSES
+class commaLinkedList {
+    constructor(digit = null) {
+        this.rootNode = new Node(digit);
+    }
+
+    printList() {
+        let tempNode = this.rootNode;
+        let theList = '';
+
+        while (tempNode) {
+            theList += tempNode.val;
+            tempNode = tempNode.next;
+        }
+
+        console.log(theList);
+    }
+
+    insert(digit) {
+        let tempNode = this.rootNode;
+
+        while (tempNode.next) {
+            tempNode = tempNode.next;
+        }
+
+        tempNode.next = new Node(digit);
+    }
+}
+
+class Node {
+    constructor(value) {
+        this.val = value;
+        this.next = null;
+    }
+}
+
+// =============================================================
 // TESTING FUNCTION FOR WHATEVER
 const testFunction = () => {
     console.log(typeof ITEM_COSTS.blackStoneWeapon);
@@ -967,50 +1004,49 @@ const remove_as = location => {
 const placeComma = (value, input_idx) => {
     // going to create a LL because insertion is clean af ez clap
     if (value.length > 3) {
-        console.log("do stuff");
+        LL = new commaLinkedList();
 
-        document.getElementsByClassName("input")[input_idx].value = commadValue;
-    }
-}
+        LL.rootNode = new Node(value[0]);
+        LL.rootNode.next = new Node(value[1]);
+        LL.rootNode.next.next = new Node(value[2]);
+        LL.rootNode.next.next.next = new Node(value[3]);
 
-
-
-
-
-
-
-
-
-
-
-
-    // value = removeComma(value);
-
-    // if (value.length > 3) {
-    //     let newValue = new Array(value.length + Math.floor((value.length-1)/3));
-    //     let firstComma = (value.length % 3 ? value.length % 3 : 3);
-    //     let value_idx = 0;
-
-    //     for (let i = firstComma; i < newValue.length; i += 4) {
-    //         newValue[i] = ",";
-    //     }
-        
-    //     for (let i = 0; i < newValue.length; i++) {
-    //         if (!(newValue[i])) {
-    //             newValue[i] = value[value_idx];
-    //             value_idx++;
-    //         }
-    //     }
-
-    //     document.getElementsByClassName("input")[input_idx].value = newValue.join("");
-
-        // one pass
-        // for (let i = 0; i < newValue.length; i++) {
-        //     if (i % 3 == firstComma) {
-        //         newValue[i] = ",";
-        //     } else {
-        //         newValue[i] = value[value_idx];
-        //         value_idx++;
-        //     }
+        // for (let i = 1; i < value.length; i++) {
+        //     console.log('potato');
         // }
-        // console.log(newValue);
+        LL.printList();
+
+        // document.getElementsByClassName('input')[input_idx].value = commadValue;
+    }
+};
+
+// value = removeComma(value);
+
+// if (value.length > 3) {
+//     let newValue = new Array(value.length + Math.floor((value.length-1)/3));
+//     let firstComma = (value.length % 3 ? value.length % 3 : 3);
+//     let value_idx = 0;
+
+//     for (let i = firstComma; i < newValue.length; i += 4) {
+//         newValue[i] = ",";
+//     }
+
+//     for (let i = 0; i < newValue.length; i++) {
+//         if (!(newValue[i])) {
+//             newValue[i] = value[value_idx];
+//             value_idx++;
+//         }
+//     }
+
+//     document.getElementsByClassName("input")[input_idx].value = newValue.join("");
+
+// one pass
+// for (let i = 0; i < newValue.length; i++) {
+//     if (i % 3 == firstComma) {
+//         newValue[i] = ",";
+//     } else {
+//         newValue[i] = value[value_idx];
+//         value_idx++;
+//     }
+// }
+// console.log(newValue);

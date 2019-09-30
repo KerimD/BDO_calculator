@@ -243,17 +243,17 @@ main button {
   border-radius: 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-transition: background-color 1s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
-  transition: background-color 1s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
-  transition: background-color 1s ease-in-out, color 0.5s ease-in-out, box-shadow .5s ease-in-out;
-  transition: background-color 1s ease-in-out, color 0.5s ease-in-out, box-shadow .5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
+  -webkit-transition: background-color 1s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow 0.5s ease-in-out;
+  transition: background-color 1s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow 0.5s ease-in-out;
+  transition: background-color 1s ease-in-out, color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  transition: background-color 1s ease-in-out, color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, -webkit-box-shadow 0.5s ease-in-out;
 }
 
 main button:hover {
-  -webkit-transition: background-color .5s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
-  transition: background-color .5s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
-  transition: background-color .5s ease-in-out, color 0.5s ease-in-out, box-shadow .5s ease-in-out;
-  transition: background-color .5s ease-in-out, color 0.5s ease-in-out, box-shadow .5s ease-in-out, -webkit-box-shadow .5s ease-in-out;
+  -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, -webkit-box-shadow 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, box-shadow 0.5s ease-in-out, -webkit-box-shadow 0.5s ease-in-out;
   background-color: black;
   color: cyan;
   -webkit-box-shadow: -2px 2px 30px 5px cyan;
