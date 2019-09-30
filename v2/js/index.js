@@ -590,6 +590,11 @@ const fixRoundOff = (number, decimal = 4) => {
 // =============================================================
 // STUFF THAT RUNS WHEN YOU CLICK CALCULATE BUTTON OR CHANGE INPUTS
 const calculate = () => {
+    // big wave
+    (function () {
+        console.log('doing stuff');
+    })();
+
     console.log('Calculating...');
 
     if (!updateItemCosts()) {

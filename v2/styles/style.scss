@@ -235,6 +235,7 @@ main {
     }
 
     button {
+        position: relative;
         justify-self: center;
         grid-area: button;
         font-weight: 600;
@@ -253,6 +254,19 @@ main {
             background-color: black;
             color: $highlight-color;
             box-shadow: -2px 2px 30px 5px $highlight-color;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            height: 0;
+            width: 0;
+            background-color: red;
+            border-radius: 50%;
+            z-index: -1;
         }
     }
 

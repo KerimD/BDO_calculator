@@ -230,6 +230,7 @@ main .item-costs label span {
 }
 
 main button {
+  position: relative;
   -ms-grid-column-align: center;
       justify-self: center;
   -ms-grid-row: 5;
@@ -258,6 +259,20 @@ main button:hover {
   color: cyan;
   -webkit-box-shadow: -2px 2px 30px 5px cyan;
           box-shadow: -2px 2px 30px 5px cyan;
+}
+
+main button::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 0;
+  width: 0;
+  background-color: red;
+  border-radius: 50%;
+  z-index: -1;
 }
 
 main .fs-table {
