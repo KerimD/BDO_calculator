@@ -77,7 +77,7 @@ const SUCCESS_FUNCTIONAL_CLOTHES = new Array(121);
 class commaLinkedList {
     constructor() {
         this.rootNode = new Node();
-        this.len = 0;
+        this.len = 1;
     }
 
     printList() {
@@ -105,9 +105,52 @@ class commaLinkedList {
         }
 
         tempNode.next = new Node(digit);
+        this.len++;
     }
 
-    removeCommas() {}
+    placeCommas() {
+        this.removeCommas();
+
+        let tempNode = this.rootNode;
+        let numCommas = parseInt((this.len - 1) / 3);
+        let initPos = ((this.len - 1) % 3) + 1;
+        let counter = 0;
+
+        while (numCommas) {
+            if (counter % 3 == initPos - 1) {
+                let tempTempNode = tempNode.next;
+                tempNode.next = new Node(',');
+                tempNode.next.next = tempTempNode;
+                numCommas--;
+                tempNode = tempNode.next.next;
+            } else {
+                tempNode = tempNode.next;
+            }
+
+            counter++;
+        }
+    }
+
+    removeCommas() {
+        let tempNode = this.rootNode;
+
+        while (tempNode.next) {
+            if (tempNode.next.val == ',') {
+                tempNode.next = tempNode.next.next;
+                this.len--;
+            }
+
+            if (tempNode.next) {
+                tempNode = tempNode.next;
+            }
+        }
+    }
+
+    returnString() {
+        let theString = '';
+
+        return theString;
+    }
 }
 
 class Node {
@@ -574,21 +617,20 @@ const generateFunctionalClothesChance = () => {
 };
 
 const setupEventListeners = () => {
-    let inputs = document.getElementsByClassName("input");
+    let inputs = document.getElementsByClassName('input');
 
     for (let input_idx in inputs) {
         if (inputs.hasOwnProperty(input_idx)) {
-
             // When hitting enter(keyCode == 13) click calculate button
-            inputs[input_idx].addEventListener("keyup", function(event) {
+            inputs[input_idx].addEventListener('keyup', function(event) {
                 if (event.keyCode === 13) {
                     event.preventDefault();
-                    document.getElementById("calculate-button").click();
+                    document.getElementById('calculate-button').click();
                 }
             });
         }
     }
-}
+};
 
 // rounds the number the given amount of decimal places
 const fixRoundOff = (number, decimal = 4) => {
@@ -599,7 +641,7 @@ const fixRoundOff = (number, decimal = 4) => {
 // STUFF THAT RUNS WHEN YOU CLICK CALCULATE BUTTON OR CHANGE INPUTS
 const calculate = () => {
     // big wave
-    (function () {
+    (function() {
         console.log('doing stuff');
     })();
 
@@ -1034,6 +1076,7 @@ const remove_as = location => {
 
 const placeComma = (value, input_idx) => {
     // going to create a LL because insertion is clean af ez clap
+    console.log(typeof value);
     if (value.length > 3) {
         LL = new commaLinkedList();
 
@@ -1041,39 +1084,10 @@ const placeComma = (value, input_idx) => {
             LL.insert(value[i]);
         }
 
+        LL.placeCommas();
         LL.printList();
+        LL.returnString();
 
         // document.getElementsByClassName('input')[input_idx].value = commadValue;
     }
 };
-
-// value = removeComma(value);
-
-// if (value.length > 3) {
-//     let newValue = new Array(value.length + Math.floor((value.length-1)/3));
-//     let firstComma = (value.length % 3 ? value.length % 3 : 3);
-//     let value_idx = 0;
-
-//     for (let i = firstComma; i < newValue.length; i += 4) {
-//         newValue[i] = ",";
-//     }
-
-//     for (let i = 0; i < newValue.length; i++) {
-//         if (!(newValue[i])) {
-//             newValue[i] = value[value_idx];
-//             value_idx++;
-//         }
-//     }
-
-//     document.getElementsByClassName("input")[input_idx].value = newValue.join("");
-
-// one pass
-// for (let i = 0; i < newValue.length; i++) {
-//     if (i % 3 == firstComma) {
-//         newValue[i] = ",";
-//     } else {
-//         newValue[i] = value[value_idx];
-//         value_idx++;
-//     }
-// }
-// console.log(newValue);
