@@ -1075,12 +1075,14 @@ const placeComma = (value, input_idx) => {
 
         LL.placeCommas();
 
-        document.getElementsByClassName('input')[input_idx].value = LL.printList();
+        document.getElementsByClassName('input')[
+            input_idx
+        ].value = LL.printList();
     }
 };
 
 const removeCommasFromString = string => {
-    noCommasString  = '';
+    noCommasString = '';
 
     for (letter of string) {
         if (letter != ',') {
@@ -1089,6 +1091,6 @@ const removeCommasFromString = string => {
     }
 
     return noCommasString;
-}
+};
 
-const doCoolRedAnimation = () => {}
+const doCoolRedAnimation = () => {};
