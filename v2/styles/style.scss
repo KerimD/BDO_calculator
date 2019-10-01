@@ -184,22 +184,22 @@ main {
         .level-dropdown span {
             position: relative;
             color: $highlight-color;
-            margin-left: 0.3em;
-            font-size: 18px;
+            font-size: 18px !important;
             font-weight: 500;
             vertical-align: super;
             font-size: smaller;
+            z-index: 1;
 
             &::after {
-                content: '* Level u r hitting for *';
+                content: 'Level u r hitting for';
                 display: none;
                 position: absolute;
                 font-size: 14px;
                 color: $highlight-color;
                 top: -1.6em;
                 left: 0;
-                background: $parent-background-color;
-                width: 11em;
+                background: black;
+                width: 133px;
             }
 
             &:hover::after,

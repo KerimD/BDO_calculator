@@ -935,7 +935,9 @@ const displayFSTable = costs => {
         table.appendChild(div);
 
         div = document.createElement('div');
-        text = document.createTextNode(costs[x][1]);
+        text = document.createTextNode(
+            returnCommaString(costs[x][1].toString())
+        );
         div.appendChild(text);
         div.className = 'cost';
 
@@ -1064,20 +1066,39 @@ const remove_as = location => {
     }
 };
 
-const placeComma = (value, input_idx) => {
-    // going to create a LL because insertion is clean af ez clap
-    if (value.length > 3) {
+// input: number must be type string
+// output: type string
+const returnCommaString = number => {
+    if (number.length > 3) {
+        // checking if input was negative
+        let start_idx = 0;
+        if (number[0] == '-') {
+            start_idx = 1;
+        }
         LL = new commaLinkedList();
 
-        for (let i = 0; i < value.length; i++) {
-            LL.insert(value[i]);
+        for (let i = start_idx; i < number.length; i++) {
+            LL.insert(number[i]);
         }
 
         LL.placeCommas();
 
+        // checking if input was negative
+        if (start_idx == 0) {
+            return LL.printList();
+        } else {
+            return '-' + LL.printList();
+        }
+    } else {
+        return number;
+    }
+};
+
+const placeComma = (value, input_idx) => {
+    if (value.length > 3) {
         document.getElementsByClassName('input')[
             input_idx
-        ].value = LL.printList();
+        ].value = returnCommaString(value);
     }
 };
 

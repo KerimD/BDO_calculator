@@ -179,23 +179,23 @@ main .dropdowns select {
 main .dropdowns .level-dropdown span {
   position: relative;
   color: cyan;
-  margin-left: 0.3em;
-  font-size: 18px;
+  font-size: 18px !important;
   font-weight: 500;
   vertical-align: super;
   font-size: smaller;
+  z-index: 1;
 }
 
 main .dropdowns .level-dropdown span::after {
-  content: '* Level u r hitting for *';
+  content: 'Level u r hitting for';
   display: none;
   position: absolute;
   font-size: 14px;
   color: cyan;
   top: -1.6em;
   left: 0;
-  background: #525252;
-  width: 11em;
+  background: black;
+  width: 133px;
 }
 
 main .dropdowns .level-dropdown span:hover::after, main .dropdowns .level-dropdown span:focus::after {
