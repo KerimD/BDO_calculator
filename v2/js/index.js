@@ -5,7 +5,8 @@
 		- Save previous Inputs
         - Custom msg for not filling inputs
         - Do a better job of centering Fs, Cost
-        - Commas for numbers
+        - Commas for numbers (DONE)
+        - Learn async stuff
         - 
 */
 
@@ -634,11 +635,6 @@ const fixRoundOff = (number, decimal = 4) => {
 // =============================================================
 // STUFF THAT RUNS WHEN YOU CLICK CALCULATE BUTTON OR CHANGE INPUTS
 const calculate = () => {
-    // big wave
-    (function() {
-        console.log('doing stuff');
-    })();
-
     console.log('Calculating...');
 
     if (!updateItemCosts()) {
@@ -1083,7 +1079,7 @@ const placeComma = (value, input_idx) => {
     }
 };
 
-const removeCommasFromString = (string) => {
+const removeCommasFromString = string => {
     noCommasString  = '';
 
     for (letter of string) {
@@ -1094,3 +1090,5 @@ const removeCommasFromString = (string) => {
 
     return noCommasString;
 }
+
+const doCoolRedAnimation = () => {}
