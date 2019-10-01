@@ -89,7 +89,7 @@ class commaLinkedList {
             tempNode = tempNode.next;
         }
 
-        console.log(theList);
+        return theList;
     }
 
     insert(digit) {
@@ -109,7 +109,7 @@ class commaLinkedList {
     }
 
     placeCommas() {
-        this.removeCommas();
+        this.removeCommasLL();
 
         let tempNode = this.rootNode;
         let numCommas = parseInt((this.len - 1) / 3);
@@ -131,7 +131,7 @@ class commaLinkedList {
         }
     }
 
-    removeCommas() {
+    removeCommasLL() {
         let tempNode = this.rootNode;
 
         while (tempNode.next) {
@@ -144,12 +144,6 @@ class commaLinkedList {
                 tempNode = tempNode.next;
             }
         }
-    }
-
-    returnString() {
-        let theString = '';
-
-        return theString;
     }
 }
 
@@ -674,7 +668,7 @@ const updateItemCosts = () => {
         if (counter >= 7) {
             break;
         }
-        newValue = advancedInputs[counter].value;
+        newValue = removeCommasFromString(advancedInputs[counter].value);
         if (newValue) {
             ITEM_COSTS[key] = Number(newValue);
         } else {
@@ -689,21 +683,21 @@ const updateItemCosts = () => {
     let as = document.getElementsByClassName('input-field-as');
     let errorMsg = '';
 
-    newValue = itemCostInputs[0].value;
+    newValue = removeCommasFromString(itemCostInputs[0].value);
     if (newValue) {
         ITEM_COSTS.baseItem = Number(newValue);
     } else {
         errorMsg = true;
     }
 
-    newValue = itemCostInputs[1].value;
+    newValue = removeCommasFromString(itemCostInputs[1].value);
     if (newValue) {
         ITEM_COSTS.preEnhanceItem = Number(newValue);
     } else {
         errorMsg = true;
     }
 
-    newValue = itemCostInputs[2].value;
+    newValue = removeCommasFromString(itemCostInputs[2].value);
     if (newValue) {
         ITEM_COSTS.postEnhanceItem = Number(newValue);
     } else {
@@ -1076,7 +1070,6 @@ const remove_as = location => {
 
 const placeComma = (value, input_idx) => {
     // going to create a LL because insertion is clean af ez clap
-    console.log(typeof value);
     if (value.length > 3) {
         LL = new commaLinkedList();
 
@@ -1085,9 +1078,19 @@ const placeComma = (value, input_idx) => {
         }
 
         LL.placeCommas();
-        LL.printList();
-        LL.returnString();
 
-        // document.getElementsByClassName('input')[input_idx].value = commadValue;
+        document.getElementsByClassName('input')[input_idx].value = LL.printList();
     }
 };
+
+const removeCommasFromString = (string) => {
+    noCommasString  = '';
+
+    for (letter of string) {
+        if (letter != ',') {
+            noCommasString += letter;
+        }
+    }
+
+    return noCommasString;
+}

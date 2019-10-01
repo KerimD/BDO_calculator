@@ -50,7 +50,6 @@
                     <input
                         aria-label="Memory Fragment"
                         class="advanced-input input"
-                        type="number"
 						placeholder="2000000"
 						oninput="placeComma(this.value, 0)"
                     />
@@ -60,8 +59,8 @@
                     <input
                         aria-label="Black Stone (Weapon)"
                         class="advanced-input input"
-                        type="number"
                         placeholder="166000"
+						oninput="placeComma(this.value, 1)"
                     />
                 </div>
                 <div>
@@ -69,8 +68,8 @@
                     <input
                         aria-label="Black Stone (Armor)"
                         class="advanced-input input"
-                        type="number"
                         placeholder="198000"
+						oninput="placeComma(this.value, 2)"
                     />
                 </div>
                 <div>
@@ -78,8 +77,8 @@
                     <input
                         aria-label="Sharp Black Crystal Shard"
                         class="advanced-input input"
-                        type="number"
                         placeholder="3450000"
+						oninput="placeComma(this.value, 3)"
                     />
                 </div>
                 <div>
@@ -87,8 +86,8 @@
                     <input
                         aria-label="Hard Black Crystal Shard"
                         class="advanced-input input"
-                        type="number"
                         placeholder="1600000"
+						oninput="placeComma(this.value, 4)"
                     />
                 </div>
                 <div>
@@ -97,7 +96,7 @@
                     <input
                         aria-label="Concentrated Magical Black Stone (Weapon)"
                         class="advanced-input input"
-                        type="number"
+                        oninput="placeComma(this.value, 5)"
                         placeholder="3980000"
                     />
                 </div>
@@ -107,7 +106,7 @@
                     <input
                         aria-label="Concentrated Magical Black Stone (Armor)"
                         class="advanced-input input"
-                        type="number"
+                        oninput="placeComma(this.value, 6)"
                         placeholder="2240000"
                     />
                 </div>
@@ -144,15 +143,14 @@
                 <div class="three-dots"></div>
                 <div>
                     <label>Base Item<span class="input-field-as"> *</span></label><br />
-                    <input aria-label="Base Item" class="base-item item-cost-input input" type="number" oninput="remove_as(0)"/>
+                    <input aria-label="Base Item" class="base-item item-cost-input input" oninput="remove_as(0), placeComma(this.value, 7)"/>
                 </div>
                 <div>
                     <label>Pre-Enhance Item<span class="input-field-as"> *</span></label><br />
                     <input
                         aria-label="Pre-Enhance Item"
                         class="pre-enhance-item item-cost-input input"
-                        type="number"
-                        oninput="remove_as(1)"
+                        oninput="remove_as(1), placeComma(this.value, 8)"
                     />
                 </div>
                 <div>
@@ -160,8 +158,7 @@
                     <input
                         aria-label="Post-Enhance Item"
                         class="post-enhance-item item-cost-input input"
-                        type="number"
-                        oninput="remove_as(2)"
+                        oninput="remove_as(2), placeComma(this.value, 9)"
                     />
                 </div>
             </section>
