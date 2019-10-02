@@ -62,6 +62,9 @@ const DEFAULT_ITEM_COSTS = {
     postEnhanceItem: null
 };
 
+// INPUTS_HISTORY = [[[old_input_values][old_costs]], [[old_input_values][old_costs]], ...]
+// const INPUTS_HISTORY = []
+
 // a predicted cost to achieve a certain failstack
 const COST_OF_FAILSTACKS = new Array(122);
 
@@ -635,15 +638,25 @@ const fixRoundOff = (number, decimal = 4) => {
 // =============================================================
 // STUFF THAT RUNS WHEN YOU CLICK CALCULATE BUTTON OR CHANGE INPUTS
 const calculate = () => {
-    console.log('Calculating...');
+    let costs;
 
     if (!updateItemCosts()) {
-        console.log('User left blank input(s)...');
         return;
     }
 
-    let costs = calculateCosts();
+    let oldInputs = oldInputs();
 
+    // checking history to see if we have already calculated costs with these inputs
+    // if (!oldInputs) {
+    //     console.log('Calculating...');
+    //     costs = calculateCosts();
+    // } else {
+    //     costs = oldInputs;
+    // }
+
+    costs = calculateCosts();
+
+    // if checkbox sorted is checked sort it before displaying
     if (document.getElementsByClassName('sort-checkbox')[0].checked) {
         displayFSTable(quickSort([...costs]));
     } else {
@@ -700,14 +713,17 @@ const updateItemCosts = () => {
         errorMsg = true;
     }
 
-    // can improve this a lot maybe display psedu elements next to input
     if (errorMsg) {
-        // alert(errorMsg);
+        console.log('User left blank input(s)...');
         return false;
     }
 
     return true;
 };
+
+// const oldInputs = () => {
+//     return false;
+// }
 
 const calculateCosts = () => {
     let costArray = new Array(121);
