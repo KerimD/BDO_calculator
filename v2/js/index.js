@@ -7,14 +7,15 @@
         - Do a better job of centering Fs, Cost
         - Commas for numbers (DONE)
         - Learn async stuff
-        - 
+		- Add a recommended range
+		- Don't re-calculate if user hasn't changed inputs
+		- Make good for 4k screens
+		- 
 */
 
 /*
 	BUGS
-		- Make good for 4k screens
         - When you click on the input it doesn't go to correct position (seems unfixable)
-        - Information for Select Level is just horrible
         - Media screen thing is giving sass bugs with css grid
         - 
 */
@@ -27,7 +28,6 @@
 		- Elbayra: only scroll through the table not the whole page (DONE)
 		- maybe disable auto re calculate on input change for mobile view (DONE)
 		- BAYCEL: make multipe tables
-		- Compare previous inputs so you don't have to recalculate every time
 		- 
 */
 
